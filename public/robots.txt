@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://lrsocialmedia.com.ar/sitemap.xml
+
+# LR Social Media & Content — Agencia de Marketing Digital Argentina
+# Keywords ES: agencia marketing digital Buenos Aires, gestión redes sociales Argentina,
+# community manager Argentina, social media manager, publicidad digital Meta Google Ads,
+# creación contenido redes sociales, marketing digital CABA GBA, todas las provincias argentinas
+# Keywords EN: social media management Argentina, digital marketing agency Buenos Aires
+# Keywords IT: gestione social media Argentina, agenzia marketing digitale Buenos Aires
+# Keywords PT: gestão redes sociais Argentina, agência marketing digital Buenos Aires
+# Nichos: gastronomía, turismo, inmobiliarias, fitness, moda, ecommerce, salud,
+# odontología, psicología, abogados, arquitectos, educación, veterinarias, estética,
+# automotrices, seguros, tecnología, startups, ONG, marcas personales
