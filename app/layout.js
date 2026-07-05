@@ -71,6 +71,7 @@ export const metadata = {
   alternates: {
     canonical: 'https://lrsocialmedia.com.ar',
   },
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 
