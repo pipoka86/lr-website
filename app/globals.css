@@ -1,4 +1,19 @@
 
+/* Planes tab content - auto fit columns */
+.tab-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+}
+
+/* Pub content - single column list layout */
+.pub-content { width: 100%; }
+/* Web cards grid - 3 col desktop */
+.web-cards-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 768px) {
+  .web-cards-grid { grid-template-columns: 1fr !important; }
+}
+
 /* ============================================
    GRID LAYOUTS — Desktop defaults in CSS
    ============================================ */
