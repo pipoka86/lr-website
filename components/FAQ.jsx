@@ -41,7 +41,7 @@ export default function FAQ() {
           <h2 style={{ fontSize:'clamp(40px,6vw,78px)', fontWeight:900, letterSpacing:'-0.02em', lineHeight:1.05, color:'#fff' }}>Todo lo que<br/>querés saber.</h2>
           <p style={{ marginTop:'20px', color:'rgba(255,255,255,0.5)', fontSize:'clamp(16px,2vw,20px)', maxWidth:'560px', margin:'20px auto 0' }}>Si tu pregunta no está acá, escribinos por WhatsApp y te respondemos en menos de 24 horas.</p>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2,1fr)', gap:'16px' }}>
+        <div className="faq-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2,1fr)', gap:'16px' }}>
           {faqs.map((f, i) => <Item key={i} {...f}/>)}
         </div>
       </div>

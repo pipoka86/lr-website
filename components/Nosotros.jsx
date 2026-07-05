@@ -59,7 +59,7 @@ export default function Nosotros() {
           <h2 style={{ fontSize:'clamp(32px,4vw,56px)', fontWeight:900, letterSpacing:'-0.02em', color:'#fff' }}>Lo que nos define</h2>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
+        <div className="nosotros-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
           {valores.map((v, i) => (
             <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'32px', transition:'all 0.3s', cursor:'default' }}
               onMouseEnter={e => { e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.borderColor='rgba(193,112,232,0.4)'; e.currentTarget.style.background='rgba(193,112,232,0.06)' }}

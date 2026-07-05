@@ -317,131 +317,107 @@ body {
 .marquee-item:hover { color: #c170e8; }
 
 /* ============================================
-   MOBILE RESPONSIVE FIXES
+   MOBILE RESPONSIVE — body.is-mobile approach
+   Works in SSR + production
    ============================================ */
 
-section[id] { scroll-margin-top: 110px; }
+html, body { overflow-x: hidden !important; max-width: 100% !important; }
 
-@media (max-width: 768px) {
+body.is-mobile .header-nav { display: none !important; }
+body.is-mobile .header-cta { display: none !important; }
+body.is-mobile .hamburger-btn { display: flex !important; }
 
-  /* ---- HEADER ---- */
-  .header-nav { display: none !important; }
-  .header-cta { display: none !important; }
-  .hamburger-btn { display: flex !important; }
-  .header-inner { padding: 0 16px !important; }
-
-  /* ---- HERO ---- */
-  .hero-grid {
-    grid-template-columns: 1fr !important;
-    padding: 0 20px !important;
-    text-align: center !important;
-    gap: 16px !important;
-  }
-  .hero-video-col { display: none !important; }
-  .hero-btns {
-    justify-content: center !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 12px !important;
-  }
-  .hero-btns a, .hero-btns button {
-    width: 100% !important;
-    justify-content: center !important;
-    font-size: 15px !important;
-    padding: 14px 20px !important;
-  }
-
-  /* ---- PILL NAV (Servicios + Planes) ---- */
-  .pill-nav-sticky {
-    overflow-x: auto !important;
-    justify-content: flex-start !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .pill-nav-sticky::-webkit-scrollbar { display: none; }
-  .pill-nav-sticky > div {
-    min-width: max-content !important;
-    flex-wrap: nowrap !important;
-  }
-  .pill-nav-sticky button {
-    font-size: 12px !important;
-    padding: 8px 14px !important;
-    white-space: nowrap !important;
-  }
-  .pill-nav-sticky img {
-    width: 28px !important;
-    height: 28px !important;
-  }
-
-  /* ---- TAB CONTENT ---- */
-  .tab-content {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* ---- PROCESO ---- */
-  .proceso-grid {
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-  }
-  .proceso-line { display: none !important; }
-  .proceso-center { display: none !important; }
-
-  /* ---- FAQ ---- */
-  .faq-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* ---- CTA ---- */
-  .cta-grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
-  .cta-form-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* ---- FOOTER ---- */
-  .footer-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 24px !important;
-  }
-  .footer-bottom {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: 8px !important;
-    padding: 20px 16px !important;
-  }
-
-  /* ---- NOSOTROS VALUES ---- */
-  .nosotros-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  /* ---- STATS ---- */
-  .stats-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 12px !important;
-  }
-
-  /* ---- GENERAL ---- */
-  section { padding: 48px 0 !important; }
-
-  /* ---- WA FLOAT ---- */
-  .wa-float {
-    width: 50px !important;
-    height: 50px !important;
-    bottom: 20px !important;
-    right: 16px !important;
-  }
+body.is-mobile .hero-grid {
+  grid-template-columns: 1fr !important;
+  padding: 0 20px !important;
+  text-align: center !important;
+  gap: 16px !important;
+}
+body.is-mobile .hero-video-col { display: none !important; }
+body.is-mobile .hero-btns {
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 12px !important;
+}
+body.is-mobile .hero-btns a,
+body.is-mobile .hero-btns button {
+  width: 100% !important;
+  justify-content: center !important;
 }
 
-@media (max-width: 480px) {
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-  }
-  .stats-grid {
-    grid-template-columns: 1fr 1fr !important;
-  }
+body.is-mobile .pill-nav-sticky {
+  overflow-x: auto !important;
+  justify-content: flex-start !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+}
+body.is-mobile .pill-nav-sticky::-webkit-scrollbar { display: none !important; }
+body.is-mobile .pill-nav-sticky > div {
+  min-width: max-content !important;
+  flex-wrap: nowrap !important;
+}
+body.is-mobile .pill-nav-sticky button {
+  font-size: 12px !important;
+  padding: 8px 14px !important;
+  white-space: nowrap !important;
+}
+body.is-mobile .pill-nav-sticky img {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+body.is-mobile .tab-content {
+  grid-template-columns: 1fr !important;
+}
+
+body.is-mobile .stats-grid {
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 16px !important;
+}
+
+body.is-mobile .faq-grid {
+  grid-template-columns: 1fr !important;
+}
+
+body.is-mobile .cta-grid {
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+}
+
+body.is-mobile .cta-form-grid {
+  grid-template-columns: 1fr !important;
+}
+
+body.is-mobile .footer-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 24px !important;
+}
+
+body.is-mobile .footer-bottom {
+  flex-direction: column !important;
+  text-align: center !important;
+  gap: 8px !important;
+  padding: 20px 16px !important;
+}
+
+body.is-mobile .nosotros-grid {
+  grid-template-columns: 1fr !important;
+}
+
+body.is-mobile .proceso-grid {
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+}
+body.is-mobile .proceso-line { display: none !important; }
+body.is-mobile .proceso-center { display: none !important; }
+
+body.is-mobile section { padding: 48px 0 !important; }
+
+body.is-mobile .wa-float {
+  width: 50px !important;
+  height: 50px !important;
+  bottom: 20px !important;
+  right: 16px !important;
 }
