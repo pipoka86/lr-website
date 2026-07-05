@@ -1,3 +1,45 @@
+
+/* ============================================
+   GRID LAYOUTS — Desktop defaults in CSS
+   ============================================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.tab-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+/* Planes tab-content - dynamic columns via JS but CSS overrides on mobile */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.cta-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+/* Hero grid - desktop */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 0 80px;
+  align-items: center;
+}
 /* ============================================
    GLOBAL STYLES — LR Social Media & Content
    ============================================ */
@@ -317,107 +359,92 @@ body {
 .marquee-item:hover { color: #c170e8; }
 
 /* ============================================
-   MOBILE RESPONSIVE — body.is-mobile approach
-   Works in SSR + production
+   MOBILE RESPONSIVE — PURE CSS MEDIA QUERIES
    ============================================ */
 
-html, body { overflow-x: hidden !important; max-width: 100% !important; }
+html, body { overflow-x: hidden; max-width: 100%; }
 
-body.is-mobile .header-nav { display: none !important; }
-body.is-mobile .header-cta { display: none !important; }
-body.is-mobile .hamburger-btn { display: flex !important; }
+@media (max-width: 768px) {
 
-body.is-mobile .hero-grid {
-  grid-template-columns: 1fr !important;
-  padding: 0 20px !important;
-  text-align: center !important;
-  gap: 16px !important;
-}
-body.is-mobile .hero-video-col { display: none !important; }
-body.is-mobile .hero-btns {
-  flex-direction: column !important;
-  align-items: stretch !important;
-  gap: 12px !important;
-}
-body.is-mobile .hero-btns a,
-body.is-mobile .hero-btns button {
-  width: 100% !important;
-  justify-content: center !important;
-}
+  .header-nav { display: none !important; }
+  .header-cta { display: none !important; }
+  .hamburger-btn { display: flex !important; }
 
-body.is-mobile .pill-nav-sticky {
-  overflow-x: auto !important;
-  justify-content: flex-start !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  -webkit-overflow-scrolling: touch !important;
-  scrollbar-width: none !important;
-}
-body.is-mobile .pill-nav-sticky::-webkit-scrollbar { display: none !important; }
-body.is-mobile .pill-nav-sticky > div {
-  min-width: max-content !important;
-  flex-wrap: nowrap !important;
-}
-body.is-mobile .pill-nav-sticky button {
-  font-size: 12px !important;
-  padding: 8px 14px !important;
-  white-space: nowrap !important;
-}
-body.is-mobile .pill-nav-sticky img {
-  width: 28px !important;
-  height: 28px !important;
-}
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px !important;
+    text-align: center !important;
+    gap: 16px !important;
+  }
+  .hero-video-col { display: none !important; }
+  .hero-btns {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .hero-btns a, .hero-btns button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 
-body.is-mobile .tab-content {
-  grid-template-columns: 1fr !important;
-}
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 
-body.is-mobile .stats-grid {
-  grid-template-columns: repeat(2, 1fr) !important;
-  gap: 16px !important;
-}
+  .tab-content {
+    grid-template-columns: 1fr !important;
+  }
 
-body.is-mobile .faq-grid {
-  grid-template-columns: 1fr !important;
-}
+  .pill-nav-sticky {
+    overflow-x: auto !important;
+    justify-content: flex-start !important;
+    padding: 12px 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .pill-nav-sticky::-webkit-scrollbar { display: none !important; }
+  .pill-nav-sticky > div {
+    min-width: max-content !important;
+    flex-wrap: nowrap !important;
+  }
+  .pill-nav-sticky button {
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+    white-space: nowrap !important;
+  }
+  .pill-nav-sticky img {
+    width: 28px !important;
+    height: 28px !important;
+  }
 
-body.is-mobile .cta-grid {
-  grid-template-columns: 1fr !important;
-  gap: 24px !important;
-}
+  .faq-grid { grid-template-columns: 1fr !important; }
+  .nosotros-grid { grid-template-columns: 1fr !important; }
+  .cta-grid { grid-template-columns: 1fr !important; }
+  .cta-form-grid { grid-template-columns: 1fr !important; }
 
-body.is-mobile .cta-form-grid {
-  grid-template-columns: 1fr !important;
-}
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 24px !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
+    padding: 20px 16px !important;
+  }
 
-body.is-mobile .footer-grid {
-  grid-template-columns: 1fr 1fr !important;
-  gap: 24px !important;
-}
+  .proceso-grid { grid-template-columns: 1fr !important; }
+  .proceso-line { display: none !important; }
+  .proceso-center { display: none !important; }
 
-body.is-mobile .footer-bottom {
-  flex-direction: column !important;
-  text-align: center !important;
-  gap: 8px !important;
-  padding: 20px 16px !important;
-}
-
-body.is-mobile .nosotros-grid {
-  grid-template-columns: 1fr !important;
+  .wa-float {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 20px !important;
+    right: 16px !important;
+  }
 }
 
-body.is-mobile .proceso-grid {
-  grid-template-columns: 1fr !important;
-  gap: 16px !important;
-}
-body.is-mobile .proceso-line { display: none !important; }
-body.is-mobile .proceso-center { display: none !important; }
-
-body.is-mobile section { padding: 48px 0 !important; }
-
-body.is-mobile .wa-float {
-  width: 50px !important;
-  height: 50px !important;
-  bottom: 20px !important;
-  right: 16px !important;
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
 }
