@@ -5,6 +5,8 @@ const TEXT_IMG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAABdCAYAAAA2
 
 export default function Footer() {
   const isMobile = useIsMobile()
+  const [open, setOpen] = useState({})
+  const toggle = (k) => setOpen(p => ({ ...p, [k]: !p[k] }))
   return (
     <footer style={{ background:'#0d0d12', borderTop:'1px solid rgba(255,255,255,0.07)' }}>
       <div style={{ padding:'36px 80px', borderBottom:'1px solid rgba(255,255,255,0.05)', display:'flex', alignItems:'center', justifyContent:'space-between', gap:'24px', flexWrap:'wrap' }}>
@@ -30,16 +32,24 @@ export default function Footer() {
             <a href="mailto:info@lrsocialmedia.com.ar" className="footer-social">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={V} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             </a>
+          </>
           </div>
         </div>
         <div>
-          <h4 style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom:'20px' }}>Servicios</h4>
+          <h4 onClick={() => isMobile && toggle('servicios')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+            Servicios {isMobile && <span>{open.servicios ? '▲' : '▼'}</span>}
+          </h4>
+          {(!isMobile || open.servicios) && <>
           <a href="#servicios" className="footer-link">Social Media Manager</a>
           <a href="#servicios" className="footer-link">Creación de Contenido</a>
           <a href="#servicios" className="footer-link">Publicidad Digital (Ads)</a>
         </div>
         <div>
-          <h4 style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom:'20px' }}>Navegación</h4>
+          </>
+          <h4 onClick={() => isMobile && toggle('nav')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+            Navegación {isMobile && <span>{open.nav ? '▲' : '▼'}</span>}
+          </h4>
+          {(!isMobile || open.nav) && <>
           <a href="#inicio" className="footer-link">Inicio</a>
           <a href="#servicios" className="footer-link">Servicios</a>
           <a href="#planes" className="footer-link">Planes</a>
@@ -49,7 +59,11 @@ export default function Footer() {
           <a href="#cta" className="footer-link">Contacto</a>
         </div>
         <div>
-          <h4 style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom:'20px' }}>Contacto</h4>
+          </>
+          <h4 onClick={() => isMobile && toggle('contacto')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+            Contacto {isMobile && <span>{open.contacto ? '▲' : '▼'}</span>}
+          </h4>
+          {(!isMobile || open.contacto) && <>
           <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp</a>
           <a href="https://www.instagram.com/lr.socialcontent/" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a>
           <a href="mailto:info@lrsocialmedia.com.ar" className="footer-link">info@lrsocialmedia.com.ar</a>

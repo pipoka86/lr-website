@@ -148,8 +148,8 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
-  if (typeof window !== 'undefined' && plan) {
-    document.body.style.overflow = 'hidden'
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = plan ? 'hidden' : ''
   }
   if (!plan) return null
   return (
