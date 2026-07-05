@@ -358,6 +358,36 @@ body {
 }
 .marquee-item:hover { color: #c170e8; }
 
+
+/* WhatsApp Float Button */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.wa-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+}
+
+/* Pill nav inner - wrap on mobile */
+.pill-nav-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
 /* ============================================
    MOBILE RESPONSIVE — PURE CSS MEDIA QUERIES
    ============================================ */
@@ -415,6 +445,22 @@ html, body { overflow-x: hidden; max-width: 100%; }
   .pill-nav-sticky img {
     width: 28px !important;
     height: 28px !important;
+  }
+
+
+  /* Pill nav - wrap tabs on mobile */
+  .pill-nav-inner {
+    flex-wrap: wrap !important;
+    border-radius: 16px !important;
+    justify-content: center !important;
+  }
+  .pill-nav-inner button {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    border-radius: 100px !important;
+  }
+  .pill-nav-inner img {
+    display: none !important;
   }
 
   .faq-grid { grid-template-columns: 1fr !important; }

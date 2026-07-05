@@ -40,11 +40,17 @@ const tabs = [
 ]
 
 function Modal({ card, onClose }) {
-  if (!card) return null
-  if (typeof document !== 'undefined') {
+  const handleClose = () => { 
+    document.body.style.overflow = ''
+    document.body.style.position = ''
+    document.body.style.top = ''
+    document.body.style.width = ''
+    onClose()
+  }
+  if (typeof window !== 'undefined' && card) {
     document.body.style.overflow = 'hidden'
   }
-  const handleClose = () => { document.body.style.overflow = ''; onClose(); }
+  if (!card) return null
   return (
     <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}
       onTouchMove={e => e.stopPropagation()}>
@@ -122,7 +128,7 @@ export default function Servicios() {
 
         {/* Sticky Pill Nav */}
         <div className="pill-nav-sticky" style={{ display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'40px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+          <div className="pill-nav-inner" style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
             {tabs.map(t => (
               <button key={t.id} onClick={() => setActive(t.id)}
                 style={{ position:'relative', display:'flex', alignItems:'center', gap:'10px', padding:'10px 22px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
@@ -139,13 +145,13 @@ export default function Servicios() {
         </div>
 
         {active === 'smm' && (
-          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
+          <div className="tab-content" style={{ gap:'20px' }}>
             {smmCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
           </div>
         )}
 
         {active === 'contenido' && (
-          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
+          <div className="tab-content" style={{ gap:'20px' }}>
             {contCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
           </div>
         )}

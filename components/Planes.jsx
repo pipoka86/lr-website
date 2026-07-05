@@ -148,10 +148,10 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
-  if (!plan) return null
-  if (typeof document !== 'undefined') {
+  if (typeof window !== 'undefined' && plan) {
     document.body.style.overflow = 'hidden'
   }
+  if (!plan) return null
   return (
     <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
@@ -263,7 +263,7 @@ export default function Planes() {
 
         {/* Sticky Pill Nav */}
         <div className="pill-nav-sticky" style={{ display:'flex', justifyContent:'center', marginBottom:'48px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+          <div className="pill-nav-inner" style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
             {tabs.map(t => (
               <button key={t.id} onClick={() => setActive(t.id)}
                 style={{ padding:'10px 24px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
@@ -280,7 +280,7 @@ export default function Planes() {
         <PlanModal plan={modal} onClose={() => setModal(null)}/>
 
         {/* Cards — equal height */}
-        <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
+        <div className="tab-content" style={{ gap: '24px', alignItems: 'stretch' }}>
           {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
         </div>
 

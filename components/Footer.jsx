@@ -11,7 +11,7 @@ export default function Footer() {
         <p style={{ color:'rgba(255,255,255,0.6)', fontSize:'17px' }}>¿Listo para hacer crecer tu marca?</p>
         <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="btn-footer">Escribinos →</a>
       </div>
-      <div style={{ padding:'80px', display:'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : '2fr 1fr 1fr 1fr', gap:'64px' }}>
+      <div className="footer-grid" style={{ padding:'80px 24px', gap:'40px' }}>
         <div>
           <div style={{ display:'flex', alignItems:'center', gap:'14px', marginBottom:'24px' }}>
             <img src={ICON} alt="LR" style={{ height:'90px', width:'90px', objectFit:'contain' }}/>
@@ -55,7 +55,7 @@ export default function Footer() {
           <a href="mailto:info@lrsocialmedia.com.ar" className="footer-link">info@lrsocialmedia.com.ar</a>
         </div>
       </div>
-      <div className="footer-bottom" style={{ borderTop:'1px solid rgba(255,255,255,0.05)', padding: isMobile ? '20px 16px' : '28px 80px', display:'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'center' : 'center', justifyContent:'space-between', textAlign: isMobile ? 'center' : 'left', gap: isMobile ? '8px' : '0', gap:'16px', flexWrap:'wrap' }}>
+      <div className="footer-bottom" style={{ borderTop:'1px solid rgba(255,255,255,0.05)', padding:'28px 24px', display:'flex', flexDirection:'row', alignItems:'center', justifyContent:'space-between', gap:'16px', flexWrap:'wrap' }}>
         <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.3)' }}>© 2026 LR Social Media & Content. Todos los derechos reservados.</p>
         <p style={{ fontSize:'13px', color:'rgba(255,255,255,0.2)' }}>Hecho con ❤️ en Argentina · Diseñado por LR Social Media & Content</p>
       </div>
