@@ -41,9 +41,7 @@ const tabs = [
 
 function Modal({ card, onClose }) {
   useEffect(() => {
-    if (card) {
-      document.body.style.overflow = 'hidden'
-    }
+    document.body.style.overflow = card ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [card])
   const handleClose = () => { onClose() }

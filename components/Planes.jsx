@@ -149,9 +149,7 @@ const pubPlanes = [
 
 function PlanModal({ plan, onClose }) {
   useEffect(() => {
-    if (plan) {
-      document.body.style.overflow = 'hidden'
-    }
+    document.body.style.overflow = plan ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [plan])
   if (!plan) return null
@@ -283,7 +281,7 @@ export default function Planes() {
         <PlanModal plan={modal} onClose={() => setModal(null)}/>
 
         {/* Cards — equal height */}
-        <div className="tab-content" style={{ gap: '24px', alignItems: 'stretch' }}>
+        <div className={`tab-content ${active === 'filmmaker' ? 'tab-content--2col' : ''}`} style={{ gap: '24px', alignItems: 'stretch' }}>
           {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
         </div>
 

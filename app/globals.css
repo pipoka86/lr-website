@@ -2,10 +2,12 @@
 /* Planes tab content - auto fit columns centered */
 .tab-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
-  justify-content: center;
-  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+.tab-content--2col {
+  grid-template-columns: repeat(2, minmax(280px, 400px)) !important;
+  justify-content: center;
 }
 
 /* Pub content - single column list layout */
