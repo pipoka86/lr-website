@@ -67,6 +67,10 @@ export default function Header() {
     <>
       {menuOpen && (
         <div style={{ position:'fixed', inset:0, background:'rgba(5,5,7,0.98)', zIndex:55, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:'24px' }}>
+          <button onClick={() => setMenuOpen(false)}
+            style={{ position:'absolute', top:'24px', right:'24px', background:'none', border:'none', color:'#fff', fontSize:'36px', cursor:'pointer', lineHeight:1 }}>
+            ×
+          </button>
           {navLinks.map(l => (
             <button key={l.href} onClick={() => go(l.href)}
               style={{ fontSize:'28px', fontWeight:700, color:'rgba(255,255,255,0.7)', background:'none', border:'none', cursor:'pointer', fontFamily:'inherit' }}>

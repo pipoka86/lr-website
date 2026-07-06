@@ -40,15 +40,13 @@ const tabs = [
 ]
 
 function Modal({ card, onClose }) {
-  const { useEffect } = require('react')
-  const handleClose = () => {
-    document.body.style.overflow = ''
-    onClose()
-  }
-  if (typeof document !== 'undefined') {
-    if (card) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
-  }
+  useEffect(() => {
+    if (card) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [card])
+  const handleClose = () => { onClose() }
   if (!card) return null
   return (
     <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}
@@ -156,7 +154,7 @@ export default function Servicios() {
         )}
 
         {active === 'pub' && (
-          <div className="tab-content" style={{ maxWidth:'860px', margin:'0 auto' }}>
+          <div className="pub-content" style={{ maxWidth:'860px', margin:'0 auto' }}>
             <p style={{ textAlign:'center', color:'rgba(255,255,255,0.5)', fontSize:'18px', lineHeight:1.6, marginBottom:'36px' }}>
               Con la estrategia correcta, cada peso invertido deja de ser un gasto y se convierte en un resultado medible.
             </p>
@@ -179,7 +177,7 @@ export default function Servicios() {
         )}
 
         {active === 'web' && (
-          <div className="tab-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
+          <div className="web-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
             <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 20px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.3)', color:'#c170e8', fontSize:'12px', fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'24px' }}>
               ✦ Próximamente
             </div>
@@ -187,7 +185,7 @@ export default function Servicios() {
             <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'18px', lineHeight:1.7, maxWidth:'560px', margin:'0 auto 36px' }}>
               Estamos preparando algo grande. Pronto vas a poder tener tu sitio web diseñado con la misma calidad y estrategia que aplicamos en redes.
             </p>
-            <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'16px', maxWidth:'600px', margin:'0 auto 36px' }}>
+            <div className="web-cards-grid" style={{ display:'grid', gap:'16px', maxWidth:'600px', margin:'0 auto 36px' }}>
               {['Landing pages', 'E-commerce', 'Sitios corporativos'].map((item, i) => (
                 <div key={i} style={{ padding:'16px', background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'12px', color:'rgba(255,255,255,0.6)', fontSize:'14px', fontWeight:600 }}>
                   {item}

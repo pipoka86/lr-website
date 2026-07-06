@@ -4,6 +4,11 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata = {
   title: 'LR Social Media & Content — Agencia de Marketing Digital | Buenos Aires, Argentina',
   description: 'Agencia de marketing digital en Buenos Aires, Argentina. Gestión de redes sociales, creación de contenido, publicidad digital y diseño web para empresas y emprendedores de toda Argentina y Latinoamérica. Social media management agency. Agenzia marketing digitale. Agência marketing digital.',
@@ -72,7 +77,6 @@ export const metadata = {
   alternates: {
     canonical: 'https://lrsocialmedia.com.ar',
   },
-  viewport: 'width=device-width, initial-scale=1',
 }
 
 

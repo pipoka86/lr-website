@@ -148,9 +148,12 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
-  if (typeof document !== 'undefined') {
-    document.body.style.overflow = plan ? 'hidden' : ''
-  }
+  useEffect(() => {
+    if (plan) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [plan])
   if (!plan) return null
   return (
     <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
