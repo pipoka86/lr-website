@@ -1,9 +1,10 @@
 
-/* Planes tab content - auto fit columns */
+/* Planes tab content - auto fit columns centered */
 .tab-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
   justify-content: center;
+  gap: 24px;
 }
 
 /* Pub content - single column list layout */
@@ -479,11 +480,10 @@ html, body { overflow-x: hidden; max-width: 100%; }
     padding: 7px 10px !important;
     border-radius: 100px !important;
     gap: 4px !important;
+    flex: 0 0 calc(50% - 6px) !important;
+    justify-content: center !important;
   }
   .pill-nav-inner img {
-    display: none !important;
-  }
-  .pill-nav-inner button span[style*="PRONTO"] {
     display: none !important;
   }
 

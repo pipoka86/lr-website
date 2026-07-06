@@ -96,7 +96,7 @@ export default function Header() {
         }}>
           <button onClick={() => go('#inicio')} style={{ background:'none', border:'none', cursor:'pointer', padding:0, display:'flex', alignItems:'center', gap:'12px' }}>
             <img src={ICON} alt="LR" style={{ height:'80px', width:'80px', objectFit:'contain' }}/>
-            {!isMobile && <img src={TEXT_IMG} alt="Social Media & Content" style={{ height:'22px', width:'auto', objectFit:'contain' }}/>}
+            <img src={TEXT_IMG} alt="Social Media & Content" style={{ height:'18px', width:'auto', objectFit:'contain' }}/>
           </button>
 
           {!isMobile && (
