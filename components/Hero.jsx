@@ -78,7 +78,7 @@ export default function Hero() {
     <section id="inicio" style={{ position:'relative', minHeight:'100vh', paddingTop:'96px', background:'#030303', display:'flex', alignItems:'center', overflow:'hidden' }}>
       <Galaxy/>
 
-      <div className="hero-grid" style={{ position:'relative', zIndex:10, width:'100%', maxWidth:'1400px', margin:'0 auto', padding: isMobile ? '0 20px' : '0 80px', display:'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '16px' : '40px', alignItems:'center', textAlign: isMobile ? 'center' : 'left' }}>
+      <div className="hero-grid" style={{ position:'relative', zIndex:10, width:'100%', maxWidth:'1400px', margin:'0 auto' }}>
 
         {/* Texto izquierda */}
         <div style={{ textAlign: isMobile ? 'center' : 'left' }}>
@@ -108,7 +108,7 @@ export default function Hero() {
         </div>
 
         {/* Video derecha — mix-blend-mode screen */}
-        <div className="hero-video-col" style={{ display: isMobile ? 'none' : 'flex', alignItems:'center', justifyContent:'center' }}>
+        <div className="hero-video-col" style={{ alignItems:'center', justifyContent:'center' }}>
           <video autoPlay muted loop playsInline
             style={{ width:'100%', maxWidth:'480px', objectFit:'contain', mixBlendMode:'screen', pointerEvents:'none' }}>
             <source src="/hero-video.mp4" type="video/mp4"/>

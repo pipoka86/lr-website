@@ -2,8 +2,9 @@
 /* Planes tab content - auto fit columns centered */
 .tab-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 380px));
   justify-content: center;
+  justify-items: center;
   gap: 24px;
 }
 
@@ -404,6 +405,14 @@ body {
   gap: 4px;
 }
 
+
+/* Hero video column */
+.hero-video-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ============================================
    MOBILE RESPONSIVE — PURE CSS MEDIA QUERIES
    ============================================ */
@@ -477,14 +486,46 @@ html, body { overflow-x: hidden; max-width: 100%; }
   }
   .pill-nav-inner button {
     font-size: 11px !important;
-    padding: 7px 10px !important;
+    padding: 7px 12px !important;
     border-radius: 100px !important;
-    gap: 4px !important;
-    flex: 0 0 calc(50% - 6px) !important;
-    justify-content: center !important;
+    white-space: nowrap !important;
   }
   .pill-nav-inner img {
     display: none !important;
+  }
+  /* Servicios: 4 tabs = 2 per row */
+  #servicios .pill-nav-inner {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    border-radius: 16px !important;
+    gap: 6px !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  #servicios .pill-nav-inner button {
+    border-radius: 100px !important;
+    justify-content: center !important;
+    white-space: normal !important;
+    text-align: center !important;
+    font-size: 11px !important;
+    padding: 8px 8px !important;
+  }
+  /* Planes: 3 tabs = 1 per row */
+  #planes .pill-nav-inner {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    border-radius: 16px !important;
+    gap: 6px !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  #planes .pill-nav-inner button {
+    border-radius: 100px !important;
+    justify-content: center !important;
+    font-size: 11px !important;
+    padding: 8px 8px !important;
   }
 
   .faq-grid { grid-template-columns: 1fr !important; }
