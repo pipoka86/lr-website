@@ -88,7 +88,7 @@ export default function Nosotros() {
           <p style={{ color:'rgba(255,255,255,0.5)', fontSize:'17px', marginBottom:'28px', lineHeight:1.6 }}>
             Nos encanta conocer nuevas marcas y proyectos. Escribinos y contanos qué tenés en mente.
           </p>
-          <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize:'17px', padding:'16px 36px' }}>
+          <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ fontSize:'17px', padding:'16px 36px' }}>
             Escribinos <span className="arr">→</span>
           </a>
         </div>

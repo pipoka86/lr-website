@@ -77,7 +77,7 @@ export default function Header() {
               {l.label}
             </button>
           ))}
-          <a className="header-cta" href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
+          <a className="header-cta" href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
             style={{ fontSize:'24px', fontWeight:700, color:V, textDecoration:'none', marginTop:'16px' }}>
             Quiero hacer crecer mi marca →
           </a>
@@ -108,7 +108,7 @@ export default function Header() {
           )}
 
           {!isMobile && (
-            <a className="header-cta" href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="btn-nav">
+            <a className="header-cta" href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer" className="btn-nav">
               Quiero hacer crecer mi marca
             </a>
           )}
