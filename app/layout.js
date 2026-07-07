@@ -14,6 +14,9 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL('https://lrsocialmedia.com.ar'),
+  verification: {
+    google: 'PzPAzhWbbIYtHaWqAfS4J76nlO24HuVi0rEg5GCSYkE',
+  },
   title: 'LR Social Media & Content — Agencia de Marketing Digital | Buenos Aires, Argentina',
   description: 'Agencia de marketing digital en Buenos Aires, Argentina. Gestión de redes sociales, creación de contenido, publicidad digital y diseño web para empresas y emprendedores de toda Argentina y Latinoamérica. Social media management agency. Agenzia marketing digitale. Agência marketing digital.',
   keywords: `
