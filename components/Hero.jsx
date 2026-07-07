@@ -110,9 +110,13 @@ export default function Hero() {
         {/* Video derecha — mix-blend-mode screen */}
         <div className="hero-video-col" style={{ alignItems:'center', justifyContent:'center' }}>
           <video autoPlay muted loop playsInline
-            style={{ width:'100%', maxWidth:'480px', objectFit:'contain', mixBlendMode:'screen', pointerEvents:'none' }}>
+            style={{ width:'100%', maxWidth:'480px', objectFit:'contain', mixBlendMode:'screen', pointerEvents:'none' }}
+            onError={e => { e.target.style.display='none'; e.target.nextSibling.style.display='flex'; }}>
             <source src="/hero-video.mp4" type="video/mp4"/>
           </video>
+          <div style={{ display:'none', alignItems:'center', justifyContent:'center', width:'400px', height:'400px' }}>
+            <div style={{ width:'300px', height:'300px', borderRadius:'50%', background:'radial-gradient(circle, rgba(193,112,232,0.3) 0%, rgba(193,112,232,0.05) 60%, transparent 100%)', boxShadow:'0 0 80px rgba(193,112,232,0.4)', animation:'pulse-anim 3s ease-in-out infinite' }}/>
+          </div>
         </div>
       </div>
 
