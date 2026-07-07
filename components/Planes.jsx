@@ -264,7 +264,7 @@ export default function Planes() {
       <div style={{ width: '100%', maxWidth: '1300px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <div className="fade-in" style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', background: 'rgba(193,112,232,0.12)', border: '1px solid rgba(193,112,232,0.25)', color: V, fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '20px' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: V, animation: 'pulse-anim 2s ease-in-out infinite' }}/>
             Planes

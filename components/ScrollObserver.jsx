@@ -11,11 +11,17 @@ export default function ScrollObserver() {
           }
         })
       },
-      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
     )
 
-    const elements = document.querySelectorAll('.fade-in')
-    elements.forEach(el => observer.observe(el))
+    const observe = () => {
+      const elements = document.querySelectorAll('.fade-in')
+      elements.forEach(el => observer.observe(el))
+    }
+
+    observe()
+    // Re-observe after a short delay to catch dynamically rendered elements
+    setTimeout(observe, 500)
 
     return () => observer.disconnect()
   }, [])
