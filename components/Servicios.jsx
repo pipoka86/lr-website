@@ -89,7 +89,7 @@ function Modal({ card, onClose }) {
             </div>
           )}
         </>}
-        <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer"
           style={{ display:'inline-flex', alignItems:'center', gap:'8px', marginTop:'28px', padding:'12px 28px', background:V, borderRadius:'12px', color:'#fff', fontWeight:700, fontSize:'15px', textDecoration:'none' }}>
           Consultá por este servicio →
         </a>
@@ -204,7 +204,7 @@ export default function Servicios() {
               ))}
             </div>
             <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'14px', marginBottom:'24px' }}>¿Te interesa? Anotate y te avisamos cuando esté disponible.</p>
-            <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent:'center', display:'inline-flex', fontSize:'15px', padding:'14px 32px' }}>
+            <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent:'center', display:'inline-flex', fontSize:'15px', padding:'14px 32px' }}>
               Quiero saber más <span className="arr">→</span>
             </a>
           </div>

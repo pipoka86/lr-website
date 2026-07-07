@@ -94,7 +94,7 @@ export default function Hero() {
             Estrategia, contenido y gestión de redes sociales para empresas y emprendedores que buscan resultados reales.
           </p>
           <div className="hero-btns" style={{ display:'flex', flexDirection: isMobile ? 'column' : 'row', flexWrap:'wrap', gap:'12px', marginBottom:'48px', alignItems: isMobile ? 'stretch' : 'center' }}>
-            <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer" className="btn-primary">
               Quiero hacer crecer mi marca <span className="arr">→</span>
             </a>
             <button onClick={() => go('#servicios')} className="btn-secondary">Conocé nuestros servicios</button>
