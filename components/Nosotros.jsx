@@ -1,4 +1,5 @@
 'use client'
+import { useState } from 'react'
 import useIsMobile from './useIsMobile'
 const V = '#c170e8'
 
@@ -14,6 +15,47 @@ const valores = [
   { title:'Resultados medibles', desc:'Decisiones basadas en datos reales, no suposiciones. Te mostramos números concretos.' },
   { title:'Contenido de calidad', desc:'Gestión profesional que construye marcas sólidas y genera confianza.' },
 ]
+
+
+function ValoresCarousel({ isMobile }) {
+  const [idx, setIdx] = useState(0)
+  
+  const ValorCard = ({ v }) => (
+    <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(193,112,232,0.2)', borderRadius:'16px', padding:'32px' }}>
+      <div style={{ width:'36px', height:'4px', background:V, borderRadius:'2px', marginBottom:'18px' }}/>
+      <h4 style={{ fontSize:'18px', fontWeight:700, color:'#fff', marginBottom:'12px' }}>{v.title}</h4>
+      <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'15px', lineHeight:1.7 }}>{v.desc}</p>
+    </div>
+  )
+
+  if (!isMobile) {
+    return (
+      <div className="nosotros-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
+        {valores.map((v, i) => <ValorCard key={i} v={v} />)}
+      </div>
+    )
+  }
+
+  return (
+    <div style={{ marginBottom:'48px' }}>
+      <div style={{ padding:'0 16px' }}>
+        <ValorCard v={valores[idx]} />
+      </div>
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'16px', marginTop:'20px' }}>
+        <button onClick={() => setIdx(i => (i - 1 + valores.length) % valores.length)}
+          style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>←</button>
+        <div style={{ display:'flex', gap:'8px' }}>
+          {valores.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)}
+              style={{ width: i === idx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === idx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+          ))}
+        </div>
+        <button onClick={() => setIdx(i => (i + 1) % valores.length)}
+          style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>→</button>
+      </div>
+    </div>
+  )
+}
 
 export default function Nosotros() {
   const isMobile = useIsMobile()
@@ -59,17 +101,7 @@ export default function Nosotros() {
           <h2 style={{ fontSize:'clamp(32px,4vw,56px)', fontWeight:900, letterSpacing:'-0.02em', color:'#fff' }}>Lo que nos define</h2>
         </div>
 
-        <div className="nosotros-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
-          {valores.map((v, i) => (
-            <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'32px', transition:'all 0.3s', cursor:'default' }}
-              onMouseEnter={e => { e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.borderColor='rgba(193,112,232,0.4)'; e.currentTarget.style.background='rgba(193,112,232,0.06)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.background='rgba(255,255,255,0.03)' }}>
-              <div style={{ width:'36px', height:'4px', background:V, borderRadius:'2px', marginBottom:'18px' }}/>
-              <h4 style={{ fontSize:'18px', fontWeight:700, color:'#fff', marginBottom:'12px' }}>{v.title}</h4>
-              <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'15px', lineHeight:1.7 }}>{v.desc}</p>
-            </div>
-          ))}
-        </div>
+        <ValoresCarousel isMobile={isMobile} />
 
         {/* Compromiso */}
         <div className="fade-in" style={{ textAlign:'center', marginBottom:'32px' }}>

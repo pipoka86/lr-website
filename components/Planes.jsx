@@ -252,6 +252,50 @@ const tabs = [
 ]
 
 
+
+function PlanesCarousel({ planes, onOpen, isMobile }) {
+  const [idx, setIdx] = useState(0)
+  const prev = () => setIdx(i => (i - 1 + planes.length) % planes.length)
+  const next = () => setIdx(i => (i + 1) % planes.length)
+
+  // On mobile: show 1 at a time with arrows
+  // On desktop: show all cards in grid
+  if (!isMobile) {
+    return (
+      <div className="tab-content" style={{ gap: '24px', alignItems: 'stretch' }}>
+        {planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => onOpen(plan)}/>)}
+      </div>
+    )
+  }
+
+  return (
+    <div style={{ position:'relative', width:'100%' }}>
+      {/* Card */}
+      <div style={{ padding:'0 16px' }}>
+        <PlanCard plan={planes[idx]} onClick={() => onOpen(planes[idx])} />
+      </div>
+
+      {/* Arrows */}
+      <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'16px', marginTop:'20px' }}>
+        <button onClick={prev} style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>←</button>
+
+        {/* Dots */}
+        <div style={{ display:'flex', gap:'8px' }}>
+          {planes.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)}
+              style={{ width: i === idx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === idx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+          ))}
+        </div>
+
+        <button onClick={next} style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>→</button>
+      </div>
+
+      {/* Counter */}
+      <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'13px', marginTop:'8px' }}>{idx + 1} de {planes.length}</p>
+    </div>
+  )
+}
+
 export default function Planes() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('redes')
@@ -294,9 +338,8 @@ export default function Planes() {
         <PlanModal plan={modal} onClose={() => setModal(null)}/>
 
         {/* Cards — equal height */}
-        <div className={`tab-content ${active === 'filmmaker' ? 'tab-content--2col' : ''}`} style={{ gap: '24px', alignItems: 'stretch' }}>
-          {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
-        </div>
+        {/* Mobile carousel */}
+        <PlanesCarousel planes={current.planes} onOpen={(plan) => setModal(plan)} isMobile={isMobile} />
 
       </div>
     </section>
