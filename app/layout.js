@@ -77,6 +77,11 @@ export const metadata = {
   alternates: {
     canonical: 'https://lrsocialmedia.com.ar',
   },
+  icons: {
+    icon: '/favicon-32.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
 }
 
 
