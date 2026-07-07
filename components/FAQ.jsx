@@ -33,7 +33,7 @@ export default function FAQ() {
     <section id="faq" style={{ padding:'80px 0', background:'#050507', position:'relative' }}>
       <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:'600px', height:'600px', borderRadius:'50%', background:'rgba(193,112,232,0.03)', filter:'blur(100px)', pointerEvents:'none' }}/>
       <div style={{ width:'100%', maxWidth:'1100px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
-        <div style={{ textAlign:'center', marginBottom:'56px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'56px' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.25)', color:V, fontSize:'11px', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:'20px' }}>
             <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:V, animation:'pulse-anim 2s ease-in-out infinite' }}/>
             Preguntas frecuentes
@@ -41,7 +41,7 @@ export default function FAQ() {
           <h2 style={{ fontSize:'clamp(40px,6vw,78px)', fontWeight:900, letterSpacing:'-0.02em', lineHeight:1.05, color:'#fff' }}>Todo lo que<br/>querés saber.</h2>
           <p style={{ marginTop:'20px', color:'rgba(255,255,255,0.5)', fontSize:'clamp(16px,2vw,20px)', maxWidth:'560px', margin:'20px auto 0' }}>Si tu pregunta no está acá, escribinos por WhatsApp y te respondemos en menos de 24 horas.</p>
         </div>
-        <div className="faq-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2,1fr)', gap:'16px' }}>
+        <div className="faq-grid" style={{ display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:'16px' }}>
           {faqs.map((f, i) => <Item key={i} {...f}/>)}
         </div>
       </div>

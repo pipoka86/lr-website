@@ -124,7 +124,7 @@ export default function Proceso() {
     <section id="proceso" ref={sectionRef} style={{ padding:'80px 0', background:'#0d0d12', position:'relative', overflow:'hidden' }}>
       <div style={{ position:'absolute', inset:0, background:'radial-gradient(circle at 20% 80%,rgba(193,112,232,0.04),transparent 60%)', pointerEvents:'none' }}/>
       <div style={{ width:'100%', maxWidth:'1100px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
-        <div style={{ textAlign:'center', marginBottom:'64px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'64px' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.25)', color:V, fontSize:'11px', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:'20px' }}>
             <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:V, animation:'pulse-anim 2s ease-in-out infinite' }}/>
             Proceso

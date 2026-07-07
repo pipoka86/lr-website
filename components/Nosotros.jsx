@@ -24,7 +24,7 @@ export default function Nosotros() {
       <div style={{ width:'100%', maxWidth:'1100px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
 
         {/* Quienes somos */}
-        <div style={{ textAlign:'center', marginBottom:'64px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'64px' }}>
           <Badge text="Quienes somos"/>
           <h2 style={{ fontSize:'clamp(36px,5vw,68px)', fontWeight:900, letterSpacing:'-0.02em', lineHeight:1.05, color:'#fff', marginBottom:'20px' }}>
             Más que un servicio.<br/>
@@ -54,12 +54,12 @@ export default function Nosotros() {
         </div>
 
         {/* Valores */}
-        <div style={{ textAlign:'center', marginBottom:'40px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'40px' }}>
           <Badge text="Nuestros valores"/>
           <h2 style={{ fontSize:'clamp(32px,4vw,56px)', fontWeight:900, letterSpacing:'-0.02em', color:'#fff' }}>Lo que nos define</h2>
         </div>
 
-        <div className="nosotros-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
+        <div className="nosotros-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
           {valores.map((v, i) => (
             <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'32px', transition:'all 0.3s', cursor:'default' }}
               onMouseEnter={e => { e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.borderColor='rgba(193,112,232,0.4)'; e.currentTarget.style.background='rgba(193,112,232,0.06)' }}
@@ -72,7 +72,7 @@ export default function Nosotros() {
         </div>
 
         {/* Compromiso */}
-        <div style={{ textAlign:'center', marginBottom:'32px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'32px' }}>
           <Badge text="Nuestro compromiso"/>
         </div>
         <div style={{ border:'1px solid rgba(193,112,232,0.5)', borderRadius:'20px', padding:'40px 48px', textAlign:'center', marginBottom:'64px', background:'rgba(193,112,232,0.05)', boxShadow:'0 0 40px rgba(193,112,232,0.1)' }}>

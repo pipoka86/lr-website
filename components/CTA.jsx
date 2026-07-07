@@ -39,7 +39,7 @@ export default function CTA() {
       <div style={{ width:'100%', maxWidth:'1200px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
 
         {/* Header */}
-        <div style={{ textAlign:'center', marginBottom:'60px' }}>
+        <div className="fade-in" style={{ textAlign:'center', marginBottom:'60px' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.25)', color:V, fontSize:'11px', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:'24px' }}>
             <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#c170e8', animation:'pulse-anim 2s ease-in-out infinite' }}/>
             Disponible para nuevos proyectos
@@ -54,7 +54,7 @@ export default function CTA() {
         </div>
 
         {/* Grid: formulario izquierda, info derecha */}
-        <div className="cta-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '24px' : '48px', alignItems:'stretch' }}>
+        <div className="cta-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'48px', alignItems:'stretch' }}>
 
           {/* Formulario */}
           <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'20px', padding:'36px' }}>
@@ -66,7 +66,7 @@ export default function CTA() {
               </div>
             ) : (
               <>
-                <div className="cta-form-grid" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap:'16px', marginBottom:'16px' }}>
+                <div className="cta-form-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'16px', marginBottom:'16px' }}>
                   {[
                     { key:'nombre', label:'Tu nombre', placeholder:'Luis García' },
                     { key:'email', label:'Email', placeholder:'luis@email.com' },

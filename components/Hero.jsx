@@ -99,7 +99,7 @@ export default function Hero() {
             </a>
             <button onClick={() => go('#servicios')} className="btn-secondary">Conocé nuestros servicios</button>
           </div>
-          <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'8px' }}>
+          <div className="fade-in" style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:'8px' }}>
             <span style={{ color:'rgba(255,255,255,0.2)', fontSize:'11px', letterSpacing:'0.15em', textTransform:'uppercase' }}>Scroll</span>
             <div style={{ width:'20px', height:'32px', borderRadius:'100px', border:'1px solid rgba(255,255,255,0.2)', display:'flex', alignItems:'flex-start', justifyContent:'center', padding:'4px' }}>
               <div style={{ width:'4px', height:'8px', borderRadius:'100px', background:V, animation:'pulse-anim 2s ease-in-out infinite' }}/>
