@@ -237,7 +237,7 @@ function PlanCard({ plan, onClick }) {
         style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'none' }}>→</span>
       </button>
-      <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
+      <a href={`https://wa.me/5491158460123?text=${encodeURIComponent(`Hola! Me interesa el ${plan.name}. ¿Podemos hablar?`)}`} target="_blank" rel="noopener noreferrer"
         className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', marginTop:'auto', display:'flex' }}>
         Consultá este plan <span className="arr">→</span>
       </a>
