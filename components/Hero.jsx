@@ -95,7 +95,7 @@ export default function Hero() {
           </p>
           <div className="hero-btns" style={{ display:'flex', flexDirection: isMobile ? 'column' : 'row', flexWrap:'wrap', gap:'12px', marginBottom:'48px', alignItems: isMobile ? 'stretch' : 'center' }}>
             <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="btn-primary">
-              Empezá tu proyecto <span className="arr">→</span>
+              Quiero hacer crecer mi marca <span className="arr">→</span>
             </a>
             <button onClick={() => go('#servicios')} className="btn-secondary">Conocé nuestros servicios</button>
           </div>

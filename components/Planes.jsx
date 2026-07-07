@@ -184,7 +184,7 @@ function PlanModal({ plan, onClose }) {
           ))}
         </ul>
         {plan.footer && <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'13px', lineHeight:1.6, fontStyle:'italic', paddingTop:'16px', borderTop:'1px solid rgba(255,255,255,0.06)', marginBottom:'20px' }}>{plan.footer}</p>}
-        <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
+        <a href={`https://wa.me/5491158460123?text=${encodeURIComponent(`Hola! Me interesa el ${plan.name}. ¿Podemos hablar?`)}`} target="_blank" rel="noopener noreferrer"
           className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', display:'flex' }}>
           Consultá este plan <span className="arr">→</span>
         </a>

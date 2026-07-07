@@ -79,7 +79,7 @@ export default function Header() {
           ))}
           <a className="header-cta" href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
             style={{ fontSize:'24px', fontWeight:700, color:V, textDecoration:'none', marginTop:'16px' }}>
-            Empezá tu proyecto →
+            Quiero hacer crecer mi marca →
           </a>
         </div>
       )}
@@ -109,7 +109,7 @@ export default function Header() {
 
           {!isMobile && (
             <a className="header-cta" href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer" className="btn-nav">
-              Empezá tu proyecto
+              Quiero hacer crecer mi marca
             </a>
           )}
 
