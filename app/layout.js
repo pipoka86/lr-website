@@ -95,6 +95,7 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#050507" />
+        <script src="https://t.contentsquare.net/uxa/b0e4193eb0f90.js" defer></script>
       </head>
       <body className={inter.className} style={{ background: '#050507', color: '#fff', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <MobileProvider><GoogleAnalytics /><MetaPixel /><ScrollObserver />{children}</MobileProvider>
