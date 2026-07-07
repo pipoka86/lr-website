@@ -270,8 +270,8 @@ export default function Planes() {
             Planes
           </div>
           <h2 style={{ fontSize: 'clamp(36px,5vw,72px)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#fff', marginBottom: '16px' }}>Elegí tu plan ideal</h2>
-          <p style={{ color: V, fontSize: '14px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            ADAPTAMOS CADA PLAN A LAS NECESIDADES REALES DE TU MARCA.
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', fontWeight: 400, maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
+            Adaptamos cada plan a las necesidades reales de tu marca.
           </p>
         </div>
 
