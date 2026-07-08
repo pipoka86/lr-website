@@ -150,22 +150,10 @@ const pubPlanes = [
 function PlanModal({ plan, onClose }) {
   useEffect(() => {
     if (plan) {
-      const y = window.scrollY
-      document.body.dataset.scrolly = y
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${y}px`
-      document.body.style.left = '0'
-      document.body.style.right = '0'
       document.body.style.overflow = 'hidden'
     }
     return () => {
-      const y = parseInt(document.body.dataset.scrolly || '0')
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.left = ''
-      document.body.style.right = ''
       document.body.style.overflow = ''
-      window.scrollTo(0, y)
     }
   }, [plan])
   if (!plan) return null
