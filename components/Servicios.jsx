@@ -51,7 +51,7 @@ function Modal({ card, onClose }) {
   const handleClose = () => { onClose() }
   if (!card) return null
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'transparent', zIndex:99999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}
+    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:99999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.3)', borderRadius:'20px', padding:'40px', maxWidth:'580px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
@@ -112,6 +112,7 @@ export default function Servicios() {
 
   return (
     <section id="servicios" style={{ padding:'80px 0', background:'#050507', position:'relative', overflow:'hidden' }}>
+      {modal && <div style={{ position:'fixed', inset:0, zIndex:99998, backdropFilter:'blur(6px)', WebkitBackdropFilter:'blur(6px)', background:'rgba(0,0,0,0.4)', pointerEvents:'none' }}/>}
       <Modal card={modal} onClose={() => setModal(null)}/>
       <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:'500px', height:'500px', borderRadius:'50%', background:'rgba(193,112,232,0.04)', filter:'blur(100px)', pointerEvents:'none' }}/>
       <div style={{ width:'100%', maxWidth:'1400px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
