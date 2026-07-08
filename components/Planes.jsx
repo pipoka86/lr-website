@@ -175,7 +175,7 @@ function PlanModal({ plan, onClose }) {
           ))}
         </ul>
         {plan.footer && <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'13px', lineHeight:1.6, fontStyle:'italic', paddingTop:'16px', borderTop:'1px solid rgba(255,255,255,0.06)', marginBottom:'20px' }}>{plan.footer}</p>}
-        <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer"
           className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', display:'flex' }}>
           Consultá este plan <span className="arr">→</span>
         </a>
@@ -228,7 +228,7 @@ function PlanCard({ plan, onClick }) {
         style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'none' }}>→</span>
       </button>
-      <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer"
         className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', marginTop:'auto', display:'flex' }}>
         Consultá este plan <span className="arr">→</span>
       </a>
