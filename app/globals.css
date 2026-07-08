@@ -1,4 +1,14 @@
 
+/* Modal open - lock scroll on html element */
+html.modal-open {
+  overflow: hidden;
+  height: 100%;
+}
+html.modal-open body {
+  overflow: hidden;
+  height: 100%;
+}
+
 /* Force modal overlay to be fully opaque regardless of parent */
 div[style*="z-index: 99999"],
 div[style*="zIndex:99999"],
