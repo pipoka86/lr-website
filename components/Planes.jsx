@@ -250,7 +250,7 @@ export default function Planes() {
   const current = tabs.find(t => t.id === active)
 
   return (
-    <section id="planes" style={{ padding: '80px 0', background: '#050507', position: 'relative', overflow: 'hidden' }}>
+    <section id="planes" style={{ padding: '80px 0', background: '#050507', position: 'relative' }}>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '600px', height: '600px', borderRadius: '50%', background: 'rgba(193,112,232,0.04)', filter: 'blur(100px)', pointerEvents: 'none' }}/>
       <div style={{ width: '100%', maxWidth: '1300px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
 
