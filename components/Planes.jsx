@@ -148,26 +148,12 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
-  useEffect(() => {
-    if (plan) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-    }
-    return () => {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
-    }
-  }, [plan])
   if (!plan) return null
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
   return (
-    <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)', touchAction:'none' }}>
+    <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
         {plan.badge && (
@@ -184,7 +170,7 @@ function PlanModal({ plan, onClose }) {
           ))}
         </ul>
         {plan.footer && <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'13px', lineHeight:1.6, fontStyle:'italic', paddingTop:'16px', borderTop:'1px solid rgba(255,255,255,0.06)', marginBottom:'20px' }}>{plan.footer}</p>}
-        <a href={`https://wa.me/5491158460123?text=${encodeURIComponent(`Hola! Me interesa el ${plan.name}. ¿Podemos hablar?`)}`} target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
           className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', display:'flex' }}>
           Consultá este plan <span className="arr">→</span>
         </a>
@@ -237,7 +223,7 @@ function PlanCard({ plan, onClick }) {
         style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'none' }}>→</span>
       </button>
-      <a href={`https://wa.me/5491158460123?text=${encodeURIComponent(`Hola! Me interesa el ${plan.name}. ¿Podemos hablar?`)}`} target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
         className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', marginTop:'auto', display:'flex' }}>
         Consultá este plan <span className="arr">→</span>
       </a>
@@ -252,50 +238,6 @@ const tabs = [
 ]
 
 
-
-function PlanesCarousel({ planes, onOpen, isMobile }) {
-  const [idx, setIdx] = useState(0)
-  const prev = () => setIdx(i => (i - 1 + planes.length) % planes.length)
-  const next = () => setIdx(i => (i + 1) % planes.length)
-
-  // On mobile: show 1 at a time with arrows
-  // On desktop: show all cards in grid
-  if (!isMobile) {
-    return (
-      <div className="tab-content" style={{ gap: '24px', alignItems: 'stretch' }}>
-        {planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => onOpen(plan)}/>)}
-      </div>
-    )
-  }
-
-  return (
-    <div style={{ position:'relative', width:'100%' }}>
-      {/* Card */}
-      <div style={{ padding:'0 16px' }}>
-        <PlanCard plan={planes[idx]} onClick={() => onOpen(planes[idx])} />
-      </div>
-
-      {/* Arrows */}
-      <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'16px', marginTop:'20px' }}>
-        <button onClick={prev} style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>←</button>
-
-        {/* Dots */}
-        <div style={{ display:'flex', gap:'8px' }}>
-          {planes.map((_, i) => (
-            <button key={i} onClick={() => setIdx(i)}
-              style={{ width: i === idx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === idx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
-          ))}
-        </div>
-
-        <button onClick={next} style={{ background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.12)', borderRadius:'50%', width:'40px', height:'40px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>→</button>
-      </div>
-
-      {/* Counter */}
-      <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'13px', marginTop:'8px' }}>{idx + 1} de {planes.length}</p>
-    </div>
-  )
-}
-
 export default function Planes() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('redes')
@@ -308,20 +250,20 @@ export default function Planes() {
       <div style={{ width: '100%', maxWidth: '1300px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
 
         {/* Header */}
-        <div className="fade-in" style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 16px', borderRadius: '100px', background: 'rgba(193,112,232,0.12)', border: '1px solid rgba(193,112,232,0.25)', color: V, fontSize: '11px', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '20px' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: V, animation: 'pulse-anim 2s ease-in-out infinite' }}/>
             Planes
           </div>
           <h2 style={{ fontSize: 'clamp(36px,5vw,72px)', fontWeight: 900, letterSpacing: '-0.02em', lineHeight: 1.05, color: '#fff', marginBottom: '16px' }}>Elegí tu plan ideal</h2>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '18px', fontWeight: 400, maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
-            Adaptamos cada plan a las necesidades reales de tu marca.
+          <p style={{ color: V, fontSize: '14px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            ADAPTAMOS CADA PLAN A LAS NECESIDADES REALES DE TU MARCA.
           </p>
         </div>
 
         {/* Sticky Pill Nav */}
         <div className="pill-nav-sticky" style={{ display:'flex', justifyContent:'center', marginBottom:'48px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div className="pill-nav-inner" style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
             {tabs.map(t => (
               <button key={t.id} onClick={() => setActive(t.id)}
                 style={{ padding:'10px 24px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
@@ -338,8 +280,9 @@ export default function Planes() {
         <PlanModal plan={modal} onClose={() => setModal(null)}/>
 
         {/* Cards — equal height */}
-        {/* Mobile carousel */}
-        <PlanesCarousel planes={current.planes} onOpen={(plan) => setModal(plan)} isMobile={isMobile} />
+        <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
+          {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
+        </div>
 
       </div>
     </section>
