@@ -1,4 +1,13 @@
 
+/* Force modal overlay to be fully opaque regardless of parent */
+div[style*="z-index: 99999"],
+div[style*="zIndex:99999"],
+div[style*="zIndex: 99999"] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
 /* ============================================
    SCROLL ANIMATIONS — fade-in on scroll
    ============================================ */

@@ -51,7 +51,7 @@ function Modal({ card, onClose }) {
   const handleClose = () => { onClose() }
   if (!card) return null
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}
+    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'#000', zIndex:99999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px',  }}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.3)', borderRadius:'20px', padding:'40px', maxWidth:'580px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
