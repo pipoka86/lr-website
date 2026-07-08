@@ -148,18 +148,28 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
+  useEffect(() => {
+    if (plan) {
+      const scrollY = window.scrollY
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${scrollY}px`
+      document.body.style.width = '100%'
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      const scrollY = document.body.style.top
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.width = ''
+      document.body.style.overflow = ''
+      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
+    }
+  }, [plan])
+  const handleClose = () => { onClose() }
   if (!plan) return null
-  if (typeof window !== 'undefined') {
-    document.body.style.overflow = 'hidden'
-    document.body.style.height = '100vh'
-  }
-  const handleClose = () => {
-    document.body.style.overflow = ''
-    document.body.style.height = ''
-    onClose()
-  }
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(3,3,3,0.96)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}>
+    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)', touchAction:'none' }}
+      onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
         {plan.badge && (
@@ -176,7 +186,7 @@ function PlanModal({ plan, onClose }) {
           ))}
         </ul>
         {plan.footer && <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'13px', lineHeight:1.6, fontStyle:'italic', paddingTop:'16px', borderTop:'1px solid rgba(255,255,255,0.06)', marginBottom:'20px' }}>{plan.footer}</p>}
-        <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
           className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', display:'flex' }}>
           Consultá este plan <span className="arr">→</span>
         </a>
@@ -229,7 +239,7 @@ function PlanCard({ plan, onClick }) {
         style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'none' }}>→</span>
       </button>
-      <a href="https://wa.link/fj0ujx" target="_blank" rel="noopener noreferrer"
+      <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
         className="btn-primary" style={{ justifyContent:'center', fontSize:'15px', padding:'14px', marginTop:'auto', display:'flex' }}>
         Consultá este plan <span className="arr">→</span>
       </a>
