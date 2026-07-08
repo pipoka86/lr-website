@@ -1,5 +1,28 @@
 
 /* ============================================
+   MODAL OPEN - blur background, lock scroll
+   ============================================ */
+body.modal-open {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+body.modal-open > *:not(.modal-overlay) {
+  filter: blur(3px) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+.modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  background: rgba(0,0,0,0.5) !important;
+}
+
+/* ============================================
    SCROLL ANIMATIONS — fade-in on scroll
    ============================================ */
 .fade-in {

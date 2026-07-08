@@ -150,25 +150,16 @@ const pubPlanes = [
 function PlanModal({ plan, onClose }) {
   useEffect(() => {
     if (plan) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
+      document.body.classList.add('modal-open')
     }
     return () => {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      document.body.classList.remove('modal-open')
     }
   }, [plan])
   const handleClose = () => { onClose() }
   if (!plan) return null
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)', touchAction:'none' }}
+    <div className="modal-overlay" onClick={handleClose}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>

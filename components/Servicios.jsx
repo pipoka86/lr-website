@@ -9,15 +9,15 @@ const ICO_PUB = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFmCAYAAABA7
 const ICO_WEB = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgogIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2IiIGN4PSI1MCUiIGN5PSI0MCUiIHI9IjUwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZThjNGZmIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2MxNzBlOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGEwZjdhIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9InNoIiBjeD0iMzUlIiBjeT0iMzAlIiByPSI0MCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8Y2xpcFBhdGggaWQ9ImdjIj4KICAgIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiLz4KICA8L2NsaXBQYXRoPgo8L2RlZnM+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9InVybCgjZ2IpIi8+CjxnIGNsaXAtcGF0aD0idXJsKCNnYykiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2Utb3BhY2l0eT0iMC4zNSI+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9Ijc1IiByeT0iMTIiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNzgiIHJ4PSI2NCIgcnk9IjEwIi8+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEyMiIgcng9IjY0IiByeT0iMTAiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNTYiIHJ4PSI0MCIgcnk9IjciLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTQ0IiByeD0iNDAiIHJ5PSI3Ii8+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9IjEyIiByeT0iNzUiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTAwIiByeD0iMzYiIHJ5PSI3NSIvPgogIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSI2MiIgcnk9Ijc1Ii8+CjwvZz4KPGcgY2xpcC1wYXRoPSJ1cmwoI2djKSIgZmlsbD0iIzdiMmZiZSIgZmlsbC1vcGFjaXR5PSIwLjY1Ij4KICA8cGF0aCBkPSJNIDQ4IDY4IFEgNTggNjIgNzAgNjYgUSA3OCA3MyA3NSA4NCBRIDcyIDkzIDYyIDk1IFEgNTIgOTYgNDcgODcgUSA0MyA3NyA0OCA2OCBaIi8+CiAgPHBhdGggZD0iTSA4OCA1MiBRIDEwMCA0OCAxMTAgNTQgUSAxMTYgNjIgMTEyIDc0IFEgMTA3IDgyIDk3IDgzIFEgODYgODIgODMgNzIgUSA4MCA2MiA4OCA1MiBaIi8+CiAgPHBhdGggZD0iTSA4OCA4OCBRIDEwMCA4NCAxMDggOTIgUSAxMTIgMTAyIDEwNiAxMTQgUSA5OSAxMjIgODkgMTIwIFEgNzkgMTE3IDc3IDEwNiBRIDc2IDk1IDg4IDg4IFoiLz4KICA8cGF0aCBkPSJNIDExOCA2MCBRIDEzMiA1NSAxNDIgNjQgUSAxNDggNzMgMTQ0IDg0IFEgMTM5IDkyIDEyOCA5MyBRIDExNyA5MiAxMTMgODIgUSAxMTAgNzEgMTE4IDYwIFoiLz4KICA8cGF0aCBkPSJNIDEzMCAxMTIgUSAxNDAgMTA4IDE0OCAxMTUgUSAxNTIgMTI0IDE0NiAxMzMgUSAxMzkgMTM5IDEzMCAxMzYgUSAxMjEgMTMyIDEyMCAxMjIgUSAxMjAgMTE0IDEzMCAxMTIgWiIvPgo8L2c+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9InVybCgjc2gpIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U4YjRmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1vcGFjaXR5PSIwLjYiLz4KPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9Ijk1IiByeT0iMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2MxNzBlOCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2UtZGFzaGFycmF5PSI2IDMiIHRyYW5zZm9ybT0icm90YXRlKC0yMCAxMDAgMTAwKSIvPgo8Y2lyY2xlIGN4PSIxODciIGN5PSI4MiIgcj0iNiIgZmlsbD0iI2MxNzBlOCIvPgo8Y2lyY2xlIGN4PSIxODciIGN5PSI4MiIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgo8Y2lyY2xlIGN4PSIxOCIgY3k9IjExMiIgcj0iNCIgZmlsbD0iI2MxNzBlOCIgb3BhY2l0eT0iMC44Ii8+CjxjaXJjbGUgY3g9IjE4IiBjeT0iMTEyIiByPSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNjMTcwZTgiIHN0cm9rZS13aWR0aD0iMS4yIiBvcGFjaXR5PSIwLjUiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTY4IiByPSI0IiBmaWxsPSIjYzE3MGU4IiBvcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTY4IiByPSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNjMTcwZTgiIHN0cm9rZS13aWR0aD0iMS4yIiBvcGFjaXR5PSIwLjUiLz4KPC9zdmc+Cg=='
 
 const smmCards = [
-  { title:'Gestión integral de redes sociales', incluye:'Planificación y publicación de contenido semanal, gestión de Instagram y Facebook, respuesta a comentarios y mensajes, seguimiento de métricas básicas.', quien:'Negocios que quieren presencia activa sin ocuparse ellos mismos de las redes.', beneficio:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.' },
-  { title:'Creación de contenido mensual', incluye:'Diseño de piezas gráficas, reels y stories, redacción de captions, calendario editorial mensual aprobado por vos antes de publicar.', quien:'Marcas que necesitan contenido de calidad constante y consistente.', beneficio:'Contenido profesional que representa tu marca como merece.' },
-  { title:'Estrategia personalizada de crecimiento', incluye:'Análisis de tu cuenta actual, definición de público objetivo, pilares temáticos, KPIs y plan de acción a 3 meses.', quien:'Negocios que quieren crecer con un plan claro, no publicar por publicar.', beneficio:'Sabés exactamente hacia dónde va tu marca en redes y por qué.' },
-  { title:'Gestión de comunidad', incluye:'Respuesta a comentarios, DMs y menciones, interacción con cuentas del mismo rubro, gestión de reseñas.', quien:'Marcas que quieren construir una comunidad fiel alrededor de su negocio.', beneficio:'Tus seguidores se sienten escuchados y vuelven.' },
-  { title:'Análisis de métricas y reportes', incluye:'Reporte mensual con alcance, engagement, crecimiento de seguidores, rendimiento de cada publicación y recomendaciones de mejora.', quien:'Negocios que quieren tomar decisiones basadas en datos reales.', beneficio:'Sabés qué está funcionando y qué hay que cambiar.' },
-  { title:'Optimización del perfil', incluye:'Revisión y mejora de bio, foto de perfil, highlights, links, nombre de usuario y primeras impresiones de la cuenta.', quien:'Cuentas que existen pero no generan confianza ni conversiones.', beneficio:'Tu perfil convierte visitas en seguidores y seguidores en clientes.' },
-  { title:'Edición de fotos y videos', incluye:'Edición profesional de imágenes y videos para redes, aplicación de identidad visual, subtítulos, efectos y música.', quien:'Marcas con material propio que necesitan darle un acabado profesional.', beneficio:'Tu contenido se ve pulido, coherente y listo para publicar.' },
-  { title:'Copywriting', incluye:'Redacción de captions persuasivos, textos para stories, bio, anuncios y comunicaciones de la marca con tono propio y consistente.', quien:'Marcas que quieren comunicar bien y conectar con su audiencia.', beneficio:'Las palabras venden. Un buen copy convierte seguidores en clientes.' },
-  { title:'Asesorías 1:1', incluye:'Sesiones personalizadas de 60 minutos por videollamada, diagnóstico de tu cuenta, plan de acción concreto y seguimiento post-sesión.', quien:'Emprendedores que quieren aprender a manejar sus propias redes con estrategia.', beneficio:'En una hora tenés claridad total de qué hacer con tu marca en redes.' },
+  { title:'Gestión integral de redes sociales', desc:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.', incluye:'Planificación y publicación de contenido semanal, gestión de Instagram y Facebook, respuesta a comentarios y mensajes, seguimiento de métricas básicas.', quien:'Negocios que quieren presencia activa sin ocuparse ellos mismos de las redes.', beneficio:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.' },
+  { title:'Creación de contenido mensual', desc:'Contenido profesional que representa tu marca como merece.', incluye:'Diseño de piezas gráficas, reels y stories, redacción de captions, calendario editorial mensual aprobado por vos antes de publicar.', quien:'Marcas que necesitan contenido de calidad constante y consistente.', beneficio:'Contenido profesional que representa tu marca como merece.' },
+  { title:'Estrategia personalizada de crecimiento', desc:'Sabés exactamente hacia dónde va tu marca en redes y por qué.', incluye:'Análisis de tu cuenta actual, definición de público objetivo, pilares temáticos, KPIs y plan de acción a 3 meses.', quien:'Negocios que quieren crecer con un plan claro, no publicar por publicar.', beneficio:'Sabés exactamente hacia dónde va tu marca en redes y por qué.' },
+  { title:'Gestión de comunidad', desc:'Tus seguidores se sienten escuchados y vuelven.', incluye:'Respuesta a comentarios, DMs y menciones, interacción con cuentas del mismo rubro, gestión de reseñas.', quien:'Marcas que quieren construir una comunidad fiel alrededor de su negocio.', beneficio:'Tus seguidores se sienten escuchados y vuelven.' },
+  { title:'Análisis de métricas y reportes', desc:'Sabés qué está funcionando y qué hay que cambiar.', incluye:'Reporte mensual con alcance, engagement, crecimiento de seguidores, rendimiento de cada publicación y recomendaciones de mejora.', quien:'Negocios que quieren tomar decisiones basadas en datos reales.', beneficio:'Sabés qué está funcionando y qué hay que cambiar.' },
+  { title:'Optimización del perfil', desc:'Tu perfil convierte visitas en seguidores y seguidores en clientes.', incluye:'Revisión y mejora de bio, foto de perfil, highlights, links, nombre de usuario y primeras impresiones de la cuenta.', quien:'Cuentas que existen pero no generan confianza ni conversiones.', beneficio:'Tu perfil convierte visitas en seguidores y seguidores en clientes.' },
+  { title:'Edición de fotos y videos', desc:'Tu contenido se ve pulido, coherente y listo para publicar.', incluye:'Edición profesional de imágenes y videos para redes, aplicación de identidad visual, subtítulos, efectos y música.', quien:'Marcas con material propio que necesitan darle un acabado profesional.', beneficio:'Tu contenido se ve pulido, coherente y listo para publicar.' },
+  { title:'Copywriting', desc:'Las palabras venden. Un buen copy convierte seguidores en clientes.', incluye:'Redacción de captions persuasivos, textos para stories, bio, anuncios y comunicaciones de la marca con tono propio y consistente.', quien:'Marcas que quieren comunicar bien y conectar con su audiencia.', beneficio:'Las palabras venden. Un buen copy convierte seguidores en clientes.' },
+  { title:'Asesorías 1:1', desc:'En una hora tenés claridad total de qué hacer con tu marca en redes.', incluye:'Sesiones personalizadas de 60 minutos por videollamada, diagnóstico de tu cuenta, plan de acción concreto y seguimiento post-sesión.', quien:'Emprendedores que quieren aprender a manejar sus propias redes con estrategia.', beneficio:'En una hora tenés claridad total de qué hacer con tu marca en redes.' },
 ]
 
 const contCards = [
@@ -42,25 +42,16 @@ const tabs = [
 function Modal({ card, onClose }) {
   useEffect(() => {
     if (card) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
+      document.body.classList.add('modal-open')
     }
     return () => {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      document.body.classList.remove('modal-open')
     }
   }, [card])
   const handleClose = () => { onClose() }
   if (!card) return null
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)', touchAction:'none' }}
+    <div className="modal-overlay" onClick={handleClose}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.3)', borderRadius:'20px', padding:'40px', maxWidth:'580px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
@@ -98,7 +89,7 @@ function Modal({ card, onClose }) {
   )
 }
 
-function SvcCard({ title, onClick }) {
+function SvcCard({ title, desc, onClick }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div className="svc-card" style={{ cursor:'pointer', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'140px' }}
@@ -106,6 +97,7 @@ function SvcCard({ title, onClick }) {
       <div>
         <div className="svc-title">{title}</div>
         <div className="svc-div"/>
+        {desc && <p style={{ color:'rgba(255,255,255,0.45)', fontSize:'13px', lineHeight:1.6, marginTop:'8px' }}>{desc}</p>}
       </div>
       <button style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s', marginTop:'12px' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}>→</span>
@@ -154,7 +146,7 @@ export default function Servicios() {
 
         {active === 'smm' && (
           <div className="tab-content" style={{ gap:'20px' }}>
-            {smmCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
+            {smmCards.map((c, i) => <SvcCard key={i} title={c.title} desc={c.desc} onClick={() => setModal(c)}/>)}
           </div>
         )}
 
