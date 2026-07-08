@@ -148,10 +148,27 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
+  useEffect(() => {
+    if (plan) {
+      const y = window.scrollY
+      document.body.dataset.scrolly = y
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${y}px`
+      document.body.style.left = '0'
+      document.body.style.right = '0'
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      const y = parseInt(document.body.dataset.scrolly || '0')
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.overflow = ''
+      window.scrollTo(0, y)
+    }
+  }, [plan])
   if (!plan) return null
-  if (typeof document !== 'undefined') {
-    document.body.style.overflow = 'hidden'
-  }
   return (
     <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>

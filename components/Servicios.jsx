@@ -40,11 +40,28 @@ const tabs = [
 ]
 
 function Modal({ card, onClose }) {
+  useEffect(() => {
+    if (card) {
+      const y = window.scrollY
+      document.body.dataset.scrolly = y
+      document.body.style.position = 'fixed'
+      document.body.style.top = `-${y}px`
+      document.body.style.left = '0'
+      document.body.style.right = '0'
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      const y = parseInt(document.body.dataset.scrolly || '0')
+      document.body.style.position = ''
+      document.body.style.top = ''
+      document.body.style.left = ''
+      document.body.style.right = ''
+      document.body.style.overflow = ''
+      window.scrollTo(0, y)
+    }
+  }, [card])
+  const handleClose = () => { onClose() }
   if (!card) return null
-  if (typeof document !== 'undefined') {
-    document.body.style.overflow = 'hidden'
-  }
-  const handleClose = () => { document.body.style.overflow = ''; onClose(); }
   return (
     <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}
       onTouchMove={e => e.stopPropagation()}>
