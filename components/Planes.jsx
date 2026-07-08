@@ -150,16 +150,16 @@ const pubPlanes = [
 function PlanModal({ plan, onClose }) {
   useEffect(() => {
     if (plan) {
-      document.body.classList.add('modal-open')
+      document.body.style.overflow = 'hidden'
     }
     return () => {
-      document.body.classList.remove('modal-open')
+      document.body.style.overflow = ''
     }
   }, [plan])
   const handleClose = () => { onClose() }
   if (!plan) return null
   return (
-    <div className="modal-overlay" data-modal="true" onClick={handleClose}
+    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:9999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>

@@ -1,36 +1,5 @@
 
 /* ============================================
-   MODAL OPEN - blur background, lock scroll
-   ============================================ */
-body.modal-open {
-  overflow: hidden !important;
-}
-/* Blur overlay - sits between content and modal */
-body.modal-open::before {
-  content: '' !important;
-  position: fixed !important;
-  inset: 0 !important;
-  backdrop-filter: blur(4px) !important;
-  -webkit-backdrop-filter: blur(4px) !important;
-  background: rgba(0,0,0,0.4) !important;
-  z-index: 999 !important;
-  pointer-events: none !important;
-}
-.modal-overlay {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  z-index: 9999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 24px !important;
-  background: rgba(0,0,0,0.7) !important;
-}
-
-/* ============================================
    SCROLL ANIMATIONS — fade-in on scroll
    ============================================ */
 .fade-in {
