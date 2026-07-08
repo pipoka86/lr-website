@@ -148,17 +148,39 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
+  const [mounted, setMounted] = useState(false)
+
   useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!mounted) return
     if (plan) {
       document.body.style.overflow = 'hidden'
     }
     return () => {
       document.body.style.overflow = ''
     }
-  }, [plan])
-  if (!plan) return null
-  return (
-    <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'#000', zIndex:99999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}>
+  }, [plan, mounted])
+
+  if (!plan || !mounted) return null
+
+  return createPortal(
+    <div
+      onClick={() => { onClose() }}
+      style={{
+        position: 'fixed',
+        top: 0, left: 0, right: 0, bottom: 0,
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+      }}
+    >
+      <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.85)', backdropFilter:'blur(6px)' }}/>
+      <div style={{ position:'relative', zIndex:1, width:'100%', display:'flex', justifyContent:'center' }}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
         {plan.badge && (
@@ -181,8 +203,11 @@ function PlanModal({ plan, onClose }) {
         </a>
       </div>
     </div>
+    </div>,
+    document.body
   )
 }
+
 
 function PlanCard({ plan, onClick }) {
   const [hovered, setHovered] = useState(false)
