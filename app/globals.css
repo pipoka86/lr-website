@@ -434,6 +434,13 @@ body {
   justify-content: center;
 }
 
+.planes-2col {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 760px !important;
+  margin: 0 auto !important;
+}
+
 /* ============================================
    MOBILE RESPONSIVE — PURE CSS MEDIA QUERIES
    ============================================ */
