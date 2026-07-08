@@ -23,10 +23,8 @@
   gap: 24px;
 }
 .tab-content--2col {
-  grid-template-columns: repeat(2, minmax(250px, 380px)) !important;
-  justify-content: center !important;
-  max-width: 820px;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, minmax(280px, 400px)) !important;
+  justify-content: center;
 }
 
 /* Pub content - single column list layout */
@@ -434,13 +432,6 @@ body {
   justify-content: center;
 }
 
-.planes-2col {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr) !important;
-  max-width: 760px !important;
-  margin: 0 auto !important;
-}
-
 /* ============================================
    MOBILE RESPONSIVE — PURE CSS MEDIA QUERIES
    ============================================ */
@@ -536,9 +527,8 @@ html, body { overflow-x: hidden; max-width: 100%; }
     justify-content: center !important;
     white-space: normal !important;
     text-align: center !important;
-    font-size: 12px !important;
-    padding: 10px 12px !important;
-    font-weight: 600 !important;
+    font-size: 11px !important;
+    padding: 8px 8px !important;
   }
   /* Planes: 3 tabs = 1 per row */
   #planes .pill-nav-inner {
@@ -553,9 +543,8 @@ html, body { overflow-x: hidden; max-width: 100%; }
   #planes .pill-nav-inner button {
     border-radius: 100px !important;
     justify-content: center !important;
-    font-size: 12px !important;
-    padding: 10px 12px !important;
-    font-weight: 600 !important;
+    font-size: 11px !important;
+    padding: 8px 8px !important;
   }
 
   .faq-grid { grid-template-columns: 1fr !important; }

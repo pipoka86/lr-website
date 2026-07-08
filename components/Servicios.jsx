@@ -9,15 +9,15 @@ const ICO_PUB = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWgAAAFmCAYAAABA7
 const ICO_WEB = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgogIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2IiIGN4PSI1MCUiIGN5PSI0MCUiIHI9IjUwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZThjNGZmIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI2MxNzBlOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNGEwZjdhIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9InNoIiBjeD0iMzUlIiBjeT0iMzAlIiByPSI0MCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjUiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgPC9yYWRpYWxHcmFkaWVudD4KICA8Y2xpcFBhdGggaWQ9ImdjIj4KICAgIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiLz4KICA8L2NsaXBQYXRoPgo8L2RlZnM+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9InVybCgjZ2IpIi8+CjxnIGNsaXAtcGF0aD0idXJsKCNnYykiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2Utb3BhY2l0eT0iMC4zNSI+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9Ijc1IiByeT0iMTIiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNzgiIHJ4PSI2NCIgcnk9IjEwIi8+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEyMiIgcng9IjY0IiByeT0iMTAiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iNTYiIHJ4PSI0MCIgcnk9IjciLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTQ0IiByeD0iNDAiIHJ5PSI3Ii8+CiAgPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9IjEyIiByeT0iNzUiLz4KICA8ZWxsaXBzZSBjeD0iMTAwIiBjeT0iMTAwIiByeD0iMzYiIHJ5PSI3NSIvPgogIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMDAiIHJ4PSI2MiIgcnk9Ijc1Ii8+CjwvZz4KPGcgY2xpcC1wYXRoPSJ1cmwoI2djKSIgZmlsbD0iIzdiMmZiZSIgZmlsbC1vcGFjaXR5PSIwLjY1Ij4KICA8cGF0aCBkPSJNIDQ4IDY4IFEgNTggNjIgNzAgNjYgUSA3OCA3MyA3NSA4NCBRIDcyIDkzIDYyIDk1IFEgNTIgOTYgNDcgODcgUSA0MyA3NyA0OCA2OCBaIi8+CiAgPHBhdGggZD0iTSA4OCA1MiBRIDEwMCA0OCAxMTAgNTQgUSAxMTYgNjIgMTEyIDc0IFEgMTA3IDgyIDk3IDgzIFEgODYgODIgODMgNzIgUSA4MCA2MiA4OCA1MiBaIi8+CiAgPHBhdGggZD0iTSA4OCA4OCBRIDEwMCA4NCAxMDggOTIgUSAxMTIgMTAyIDEwNiAxMTQgUSA5OSAxMjIgODkgMTIwIFEgNzkgMTE3IDc3IDEwNiBRIDc2IDk1IDg4IDg4IFoiLz4KICA8cGF0aCBkPSJNIDExOCA2MCBRIDEzMiA1NSAxNDIgNjQgUSAxNDggNzMgMTQ0IDg0IFEgMTM5IDkyIDEyOCA5MyBRIDExNyA5MiAxMTMgODIgUSAxMTAgNzEgMTE4IDYwIFoiLz4KICA8cGF0aCBkPSJNIDEzMCAxMTIgUSAxNDAgMTA4IDE0OCAxMTUgUSAxNTIgMTI0IDE0NiAxMzMgUSAxMzkgMTM5IDEzMCAxMzYgUSAxMjEgMTMyIDEyMCAxMjIgUSAxMjAgMTE0IDEzMCAxMTIgWiIvPgo8L2c+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9InVybCgjc2gpIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2U4YjRmZiIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1vcGFjaXR5PSIwLjYiLz4KPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9Ijk1IiByeT0iMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2MxNzBlOCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2Utb3BhY2l0eT0iMC42IiBzdHJva2UtZGFzaGFycmF5PSI2IDMiIHRyYW5zZm9ybT0icm90YXRlKC0yMCAxMDAgMTAwKSIvPgo8Y2lyY2xlIGN4PSIxODciIGN5PSI4MiIgcj0iNiIgZmlsbD0iI2MxNzBlOCIvPgo8Y2lyY2xlIGN4PSIxODciIGN5PSI4MiIgcj0iMyIgZmlsbD0iI2ZmZmZmZiIvPgo8Y2lyY2xlIGN4PSIxOCIgY3k9IjExMiIgcj0iNCIgZmlsbD0iI2MxNzBlOCIgb3BhY2l0eT0iMC44Ii8+CjxjaXJjbGUgY3g9IjE4IiBjeT0iMTEyIiByPSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNjMTcwZTgiIHN0cm9rZS13aWR0aD0iMS4yIiBvcGFjaXR5PSIwLjUiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTY4IiByPSI0IiBmaWxsPSIjYzE3MGU4IiBvcGFjaXR5PSIwLjgiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTY4IiByPSI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNjMTcwZTgiIHN0cm9rZS13aWR0aD0iMS4yIiBvcGFjaXR5PSIwLjUiLz4KPC9zdmc+Cg=='
 
 const smmCards = [
-  { title:'Gestión integral de redes sociales', desc:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.', incluye:'Planificación y publicación de contenido semanal, gestión de Instagram y Facebook, respuesta a comentarios y mensajes, seguimiento de métricas básicas.', quien:'Negocios que quieren presencia activa sin ocuparse ellos mismos de las redes.', beneficio:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.' },
-  { title:'Creación de contenido mensual', desc:'Contenido profesional que representa tu marca como merece.', incluye:'Diseño de piezas gráficas, reels y stories, redacción de captions, calendario editorial mensual aprobado por vos antes de publicar.', quien:'Marcas que necesitan contenido de calidad constante y consistente.', beneficio:'Contenido profesional que representa tu marca como merece.' },
-  { title:'Estrategia personalizada de crecimiento', desc:'Sabés exactamente hacia dónde va tu marca en redes y por qué.', incluye:'Análisis de tu cuenta actual, definición de público objetivo, pilares temáticos, KPIs y plan de acción a 3 meses.', quien:'Negocios que quieren crecer con un plan claro, no publicar por publicar.', beneficio:'Sabés exactamente hacia dónde va tu marca en redes y por qué.' },
-  { title:'Gestión de comunidad', desc:'Tus seguidores se sienten escuchados y vuelven.', incluye:'Respuesta a comentarios, DMs y menciones, interacción con cuentas del mismo rubro, gestión de reseñas.', quien:'Marcas que quieren construir una comunidad fiel alrededor de su negocio.', beneficio:'Tus seguidores se sienten escuchados y vuelven.' },
-  { title:'Análisis de métricas y reportes', desc:'Sabés qué está funcionando y qué hay que cambiar.', incluye:'Reporte mensual con alcance, engagement, crecimiento de seguidores, rendimiento de cada publicación y recomendaciones de mejora.', quien:'Negocios que quieren tomar decisiones basadas en datos reales.', beneficio:'Sabés qué está funcionando y qué hay que cambiar.' },
-  { title:'Optimización del perfil', desc:'Tu perfil convierte visitas en seguidores y seguidores en clientes.', incluye:'Revisión y mejora de bio, foto de perfil, highlights, links, nombre de usuario y primeras impresiones de la cuenta.', quien:'Cuentas que existen pero no generan confianza ni conversiones.', beneficio:'Tu perfil convierte visitas en seguidores y seguidores en clientes.' },
-  { title:'Edición de fotos y videos', desc:'Tu contenido se ve pulido, coherente y listo para publicar.', incluye:'Edición profesional de imágenes y videos para redes, aplicación de identidad visual, subtítulos, efectos y música.', quien:'Marcas con material propio que necesitan darle un acabado profesional.', beneficio:'Tu contenido se ve pulido, coherente y listo para publicar.' },
-  { title:'Copywriting', desc:'Las palabras venden. Un buen copy convierte seguidores en clientes.', incluye:'Redacción de captions persuasivos, textos para stories, bio, anuncios y comunicaciones de la marca con tono propio y consistente.', quien:'Marcas que quieren comunicar bien y conectar con su audiencia.', beneficio:'Las palabras venden. Un buen copy convierte seguidores en clientes.' },
-  { title:'Asesorías 1:1', desc:'En una hora tenés claridad total de qué hacer con tu marca en redes.', incluye:'Sesiones personalizadas de 60 minutos por videollamada, diagnóstico de tu cuenta, plan de acción concreto y seguimiento post-sesión.', quien:'Emprendedores que quieren aprender a manejar sus propias redes con estrategia.', beneficio:'En una hora tenés claridad total de qué hacer con tu marca en redes.' },
+  { title:'Gestión integral de redes sociales', incluye:'Planificación y publicación de contenido semanal, gestión de Instagram y Facebook, respuesta a comentarios y mensajes, seguimiento de métricas básicas.', quien:'Negocios que quieren presencia activa sin ocuparse ellos mismos de las redes.', beneficio:'Tu cuenta activa todos los días sin que vos tengas que hacer nada.' },
+  { title:'Creación de contenido mensual', incluye:'Diseño de piezas gráficas, reels y stories, redacción de captions, calendario editorial mensual aprobado por vos antes de publicar.', quien:'Marcas que necesitan contenido de calidad constante y consistente.', beneficio:'Contenido profesional que representa tu marca como merece.' },
+  { title:'Estrategia personalizada de crecimiento', incluye:'Análisis de tu cuenta actual, definición de público objetivo, pilares temáticos, KPIs y plan de acción a 3 meses.', quien:'Negocios que quieren crecer con un plan claro, no publicar por publicar.', beneficio:'Sabés exactamente hacia dónde va tu marca en redes y por qué.' },
+  { title:'Gestión de comunidad', incluye:'Respuesta a comentarios, DMs y menciones, interacción con cuentas del mismo rubro, gestión de reseñas.', quien:'Marcas que quieren construir una comunidad fiel alrededor de su negocio.', beneficio:'Tus seguidores se sienten escuchados y vuelven.' },
+  { title:'Análisis de métricas y reportes', incluye:'Reporte mensual con alcance, engagement, crecimiento de seguidores, rendimiento de cada publicación y recomendaciones de mejora.', quien:'Negocios que quieren tomar decisiones basadas en datos reales.', beneficio:'Sabés qué está funcionando y qué hay que cambiar.' },
+  { title:'Optimización del perfil', incluye:'Revisión y mejora de bio, foto de perfil, highlights, links, nombre de usuario y primeras impresiones de la cuenta.', quien:'Cuentas que existen pero no generan confianza ni conversiones.', beneficio:'Tu perfil convierte visitas en seguidores y seguidores en clientes.' },
+  { title:'Edición de fotos y videos', incluye:'Edición profesional de imágenes y videos para redes, aplicación de identidad visual, subtítulos, efectos y música.', quien:'Marcas con material propio que necesitan darle un acabado profesional.', beneficio:'Tu contenido se ve pulido, coherente y listo para publicar.' },
+  { title:'Copywriting', incluye:'Redacción de captions persuasivos, textos para stories, bio, anuncios y comunicaciones de la marca con tono propio y consistente.', quien:'Marcas que quieren comunicar bien y conectar con su audiencia.', beneficio:'Las palabras venden. Un buen copy convierte seguidores en clientes.' },
+  { title:'Asesorías 1:1', incluye:'Sesiones personalizadas de 60 minutos por videollamada, diagnóstico de tu cuenta, plan de acción concreto y seguimiento post-sesión.', quien:'Emprendedores que quieren aprender a manejar sus propias redes con estrategia.', beneficio:'En una hora tenés claridad total de qué hacer con tu marca en redes.' },
 ]
 
 const contCards = [
@@ -40,18 +40,13 @@ const tabs = [
 ]
 
 function Modal({ card, onClose }) {
-  useEffect(() => {
-    if (card) {
-      document.body.style.overflow = 'hidden'
-    }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [card])
-  const handleClose = () => { onClose() }
   if (!card) return null
+  if (typeof document !== 'undefined') {
+    document.body.style.overflow = 'hidden'
+  }
+  const handleClose = () => { document.body.style.overflow = ''; onClose(); }
   return (
-    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:9999, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px' }}
+    <div onClick={handleClose} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.8)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}
       onTouchMove={e => e.stopPropagation()}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.3)', borderRadius:'20px', padding:'40px', maxWidth:'580px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={handleClose} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
@@ -80,7 +75,7 @@ function Modal({ card, onClose }) {
             </div>
           )}
         </>}
-        <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer"
+        <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer"
           style={{ display:'inline-flex', alignItems:'center', gap:'8px', marginTop:'28px', padding:'12px 28px', background:V, borderRadius:'12px', color:'#fff', fontWeight:700, fontSize:'15px', textDecoration:'none' }}>
           Consultá por este servicio →
         </a>
@@ -89,7 +84,7 @@ function Modal({ card, onClose }) {
   )
 }
 
-function SvcCard({ title, desc, onClick }) {
+function SvcCard({ title, onClick }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div className="svc-card" style={{ cursor:'pointer', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'140px' }}
@@ -97,7 +92,6 @@ function SvcCard({ title, desc, onClick }) {
       <div>
         <div className="svc-title">{title}</div>
         <div className="svc-div"/>
-        {desc && <p style={{ color:'rgba(255,255,255,0.45)', fontSize:'13px', lineHeight:1.6, marginTop:'8px' }}>{desc}</p>}
       </div>
       <button style={{ display:'inline-flex', alignItems:'center', gap:'6px', background:'none', border:'none', color: hovered ? V : 'rgba(255,255,255,0.4)', fontSize:'13px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', padding:0, transition:'all 0.3s', marginTop:'12px' }}>
         Ver más <span style={{ transition:'transform 0.3s', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}>→</span>
@@ -117,7 +111,7 @@ export default function Servicios() {
       <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:'500px', height:'500px', borderRadius:'50%', background:'rgba(193,112,232,0.04)', filter:'blur(100px)', pointerEvents:'none' }}/>
       <div style={{ width:'100%', maxWidth:'1400px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
 
-        <div className="fade-in" style={{ textAlign:'center', marginBottom:'48px' }}>
+        <div style={{ textAlign:'center', marginBottom:'48px' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.25)', color:V, fontSize:'11px', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:'20px' }}>
             <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:V, animation:'pulse-anim 2s ease-in-out infinite' }}/>
             Servicios
@@ -128,7 +122,7 @@ export default function Servicios() {
 
         {/* Sticky Pill Nav */}
         <div className="pill-nav-sticky" style={{ display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'40px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div className="pill-nav-inner" style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
             {tabs.map(t => (
               <button key={t.id} onClick={() => setActive(t.id)}
                 style={{ position:'relative', display:'flex', alignItems:'center', gap:'10px', padding:'10px 22px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
@@ -145,20 +139,20 @@ export default function Servicios() {
         </div>
 
         {active === 'smm' && (
-          <div className="tab-content" style={{ gap:'20px' }}>
-            {smmCards.map((c, i) => <SvcCard key={i} title={c.title} desc={c.desc} onClick={() => setModal(c)}/>)}
+          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
+            {smmCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
           </div>
         )}
 
         {active === 'contenido' && (
-          <div className="tab-content" style={{ gap:'20px' }}>
+          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
             {contCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
           </div>
         )}
 
         {active === 'pub' && (
-          <div className="pub-content" style={{ maxWidth:'860px', margin:'0 auto' }}>
-            <p style={{ textAlign:'center', color:'rgba(255,255,255,0.5)', fontSize:'18px', lineHeight:1.6, marginBottom:'36px', maxWidth:'600px', margin:'0 auto 36px' }}>
+          <div className="tab-content" style={{ maxWidth:'860px', margin:'0 auto' }}>
+            <p style={{ textAlign:'center', color:'rgba(255,255,255,0.5)', fontSize:'18px', lineHeight:1.6, marginBottom:'36px' }}>
               Con la estrategia correcta, cada peso invertido deja de ser un gasto y se convierte en un resultado medible.
             </p>
             {pubCards.map((p, i) => (
@@ -180,7 +174,7 @@ export default function Servicios() {
         )}
 
         {active === 'web' && (
-          <div className="web-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
+          <div className="tab-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
             <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 20px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.3)', color:'#c170e8', fontSize:'12px', fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'24px' }}>
               ✦ Próximamente
             </div>
@@ -188,7 +182,7 @@ export default function Servicios() {
             <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'18px', lineHeight:1.7, maxWidth:'560px', margin:'0 auto 36px' }}>
               Estamos preparando algo grande. Pronto vas a poder tener tu sitio web diseñado con la misma calidad y estrategia que aplicamos en redes.
             </p>
-            <div className="web-cards-grid" style={{ display:'grid', gap:'16px', maxWidth:'600px', margin:'0 auto 36px' }}>
+            <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'16px', maxWidth:'600px', margin:'0 auto 36px' }}>
               {['Landing pages', 'E-commerce', 'Sitios corporativos'].map((item, i) => (
                 <div key={i} style={{ padding:'16px', background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'12px', color:'rgba(255,255,255,0.6)', fontSize:'14px', fontWeight:600 }}>
                   {item}
@@ -196,7 +190,7 @@ export default function Servicios() {
               ))}
             </div>
             <p style={{ color:'rgba(255,255,255,0.4)', fontSize:'14px', marginBottom:'24px' }}>¿Te interesa? Anotate y te avisamos cuando esté disponible.</p>
-            <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent:'center', display:'inline-flex', fontSize:'15px', padding:'14px 32px' }}>
+            <a href="https://wa.me/5491158460123" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ justifyContent:'center', display:'inline-flex', fontSize:'15px', padding:'14px 32px' }}>
               Quiero saber más <span className="arr">→</span>
             </a>
           </div>
