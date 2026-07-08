@@ -250,7 +250,9 @@ export default function Planes() {
   const current = tabs.find(t => t.id === active)
 
   return (
-    <section id="planes" style={{ padding: '80px 0', background: '#050507', position: 'relative' }}>
+    <section id="planes" style={{ padding: '80px 0', background: '#050507', position: 'relative', overflow: 'hidden' }}>
+      {modal && <div style={{ position:'fixed', inset:0, zIndex:99998, backdropFilter:'blur(6px)', WebkitBackdropFilter:'blur(6px)', background:'rgba(0,0,0,0.4)', pointerEvents:'none' }}/>}
+      <PlanModal plan={modal} onClose={() => setModal(null)}/>
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '600px', height: '600px', borderRadius: '50%', background: 'rgba(193,112,232,0.04)', filter: 'blur(100px)', pointerEvents: 'none' }}/>
       <div style={{ width: '100%', maxWidth: '1300px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
 
@@ -282,10 +284,7 @@ export default function Planes() {
           </div>
         </div>
 
-        {modal && <div style={{ position:'fixed', inset:0, zIndex:99998, backdropFilter:'blur(6px)', WebkitBackdropFilter:'blur(6px)', background:'rgba(0,0,0,0.5)', pointerEvents:'none' }}/>}
-        <PlanModal plan={modal} onClose={() => setModal(null)}/>
-
-        {/* Cards — equal height */}
+              {/* Cards — equal height */}
         <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
           {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
         </div>
