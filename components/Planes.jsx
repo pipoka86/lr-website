@@ -148,26 +148,9 @@ const pubPlanes = [
 ]
 
 function PlanModal({ plan, onClose }) {
-  useEffect(() => {
-    if (plan) {
-      const scrollY = window.scrollY
-      document.body.style.position = 'fixed'
-      document.body.style.top = `-${scrollY}px`
-      document.body.style.width = '100%'
-      document.body.style.overflow = 'hidden'
-    }
-    return () => {
-      const scrollY = document.body.style.top
-      document.body.style.position = ''
-      document.body.style.top = ''
-      document.body.style.width = ''
-      document.body.style.overflow = ''
-      if (scrollY) window.scrollTo(0, parseInt(scrollY || '0') * -1)
-    }
-  }, [plan])
   if (!plan) return null
   return (
-    <div onClick={() => { onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
+    <div onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'fixed', inset:0, background:'rgba(0,0,0,0.85)', zIndex:1000, display:'flex', alignItems:'center', justifyContent:'center', padding:'24px', backdropFilter:'blur(8px)' }}>
       <div onClick={e => e.stopPropagation()} style={{ background:'#0d0d12', border:'1px solid rgba(193,112,232,0.35)', borderRadius:'20px', padding:'40px', maxWidth:'560px', width:'100%', position:'relative', boxShadow:'0 0 60px rgba(193,112,232,0.15)', maxHeight:'85vh', overflowY:'auto', WebkitOverflowScrolling:'touch' }} onTouchMove={e => e.stopPropagation()}>
         <button onClick={() => { document.body.style.overflow = ''; onClose(); }} style={{ position:'absolute', top:'16px', right:'16px', background:'rgba(255,255,255,0.08)', border:'none', borderRadius:'50%', width:'32px', height:'32px', color:'#fff', fontSize:'18px', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>×</button>
         {plan.badge && (
@@ -295,7 +278,7 @@ export default function Planes() {
 
         {/* Cards — equal height */}
         <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
-          {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
+          {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => { document.body.style.overflow = 'hidden'; setModal(plan); }}/>)}
         </div>
 
       </div>
