@@ -180,7 +180,7 @@ export default function Servicios() {
         )}
 
         {active === 'web' && (
-          <div className="tab-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
+          <div className="web-content" style={{ maxWidth:'700px', margin:'0 auto', textAlign:'center', padding:'60px 0' }}>
             <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 20px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.3)', color:'#c170e8', fontSize:'12px', fontWeight:700, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'24px' }}>
               ✦ Próximamente
             </div>
