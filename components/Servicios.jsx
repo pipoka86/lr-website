@@ -157,7 +157,7 @@ export default function Servicios() {
         )}
 
         {active === 'pub' && (
-          <div className="tab-content" style={{ maxWidth:'860px', margin:'0 auto' }}>
+          <div className="pub-content" style={{ maxWidth:'760px', margin:'0 auto' }}>
             <p style={{ textAlign:'center', color:'rgba(255,255,255,0.5)', fontSize:'18px', lineHeight:1.6, marginBottom:'36px' }}>
               Con la estrategia correcta, cada peso invertido deja de ser un gasto y se convierte en un resultado medible.
             </p>
