@@ -247,6 +247,9 @@ export default function Planes() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('redes')
   const [modal, setModal] = useState(null)
+  const [carouselIdx, setCarouselIdx] = useState(0)
+  const touchStartX = useRef(null)
+  useEffect(() => setCarouselIdx(0), [active])
   const current = tabs.find(t => t.id === active)
 
   return (
@@ -285,9 +288,32 @@ export default function Planes() {
         </div>
 
               {/* Cards — equal height */}
-        <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
-          {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
-        </div>
+        {isMobile ? (
+          <div
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+            onTouchEnd={e => {
+              if (!touchStartX.current) return
+              const diff = touchStartX.current - e.changedTouches[0].clientX
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) setCarouselIdx(i => Math.min(i + 1, current.planes.length - 1))
+                else setCarouselIdx(i => Math.max(i - 1, 0))
+              }
+              touchStartX.current = null
+            }}>
+            <PlanCard plan={current.planes[carouselIdx]} onClick={() => setModal(current.planes[carouselIdx])}/>
+            <div style={{ display:'flex', justifyContent:'center', gap:'8px', marginTop:'16px' }}>
+              {current.planes.map((_, i) => (
+                <button key={i} onClick={() => setCarouselIdx(i)}
+                  style={{ width: i === carouselIdx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === carouselIdx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+              ))}
+            </div>
+            <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'12px', marginTop:'8px' }}>{carouselIdx + 1} de {current.planes.length} · Deslizá</p>
+          </div>
+        ) : (
+          <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
+            {current.planes.map((plan, i) => <PlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>)}
+          </div>
+        )}
 
       </div>
     </section>
