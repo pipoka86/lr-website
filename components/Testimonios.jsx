@@ -1,6 +1,6 @@
 'use client'
 import useIsMobile from './useIsMobile'
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 const V = '#c170e8'
 
 const testimonios = [
@@ -15,7 +15,6 @@ const testimonios = [
 export default function Testimonios() {
   const isMobile = useIsMobile()
   const [current, setCurrent] = useState(0)
-  const touchStartX = useRef(null)
   const total = testimonios.length
   const prev = () => setCurrent(c => (c - 1 + total) % total)
   const next = () => setCurrent(c => (c + 1) % total)
@@ -28,7 +27,7 @@ export default function Testimonios() {
       <div style={{ position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)', width:'500px', height:'500px', borderRadius:'50%', background:'rgba(193,112,232,0.04)', filter:'blur(80px)', pointerEvents:'none' }}/>
       <div style={{ width:'100%', maxWidth:'1200px', margin:'0 auto', padding: isMobile ? '0 16px' : '0 24px', position:'relative', zIndex:1 }}>
 
-        <div className="fade-in" style={{ textAlign:'center', marginBottom:'48px' }}>
+        <div style={{ textAlign:'center', marginBottom:'48px' }}>
           <div style={{ display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 16px', borderRadius:'100px', background:'rgba(193,112,232,0.12)', border:'1px solid rgba(193,112,232,0.25)', color:V, fontSize:'11px', fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:'20px' }}>
             <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:V, animation:'pulse-anim 2s ease-in-out infinite' }}/>
             Testimonios
@@ -37,17 +36,7 @@ export default function Testimonios() {
         </div>
 
         {/* Carrusel */}
-        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px', marginBottom:'40px' }}
-          onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
-          onTouchEnd={e => {
-            if (!touchStartX.current) return
-            const diff = touchStartX.current - e.changedTouches[0].clientX
-            if (Math.abs(diff) > 50) {
-              if (diff > 0) setCurrent(c => (c + 1) % total)
-              else setCurrent(c => (c - 1 + total) % total)
-            }
-            touchStartX.current = null
-          }}>
+        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px', marginBottom:'40px' }}>
           {visible.map((t, i) => (
             <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'28px', transition:'all 0.3s', display:'flex', flexDirection:'column', gap:'16px' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(193,112,232,0.35)'; e.currentTarget.style.background='rgba(193,112,232,0.05)' }}
