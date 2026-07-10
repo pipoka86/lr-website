@@ -117,10 +117,103 @@ function SvcCard({ title, onClick }) {
   )
 }
 
+
+function CarouselGrid({ cards, carouselPage, setCarouselPage, touchStartX, setModal }) {
+  const PAGE_SIZE = 4
+  const totalPages = Math.ceil(cards.length / PAGE_SIZE)
+  const pageCards = cards.slice(carouselPage * PAGE_SIZE, (carouselPage + 1) * PAGE_SIZE)
+
+  return (
+    <div
+      onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+      onTouchEnd={e => {
+        if (!touchStartX.current) return
+        const diff = touchStartX.current - e.changedTouches[0].clientX
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) setCarouselPage(p => Math.min(p + 1, totalPages - 1))
+          else setCarouselPage(p => Math.max(p - 1, 0))
+        }
+        touchStartX.current = null
+      }}>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap:'12px', marginBottom:'16px' }}>
+        {pageCards.map((card, i) => (
+          <SvcCard key={i} title={card.title} onClick={() => setModal(card)}/>
+        ))}
+      </div>
+      {totalPages > 1 && (
+        <>
+          <div style={{ display:'flex', justifyContent:'center', gap:'8px', marginTop:'8px' }}>
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button key={i} onClick={() => setCarouselPage(i)}
+                style={{ width: i === carouselPage ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === carouselPage ? '#c170e8' : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+            ))}
+          </div>
+          <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'12px', marginTop:'8px' }}>
+            {carouselPage + 1} de {totalPages} · Deslizá para ver más
+          </p>
+        </>
+      )}
+    </div>
+  )
+}
+
+
+function TiltedTabCard({ tab, active, onClick }) {
+  const isActive = active === tab.id
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [pressed, setPressed] = useState(false)
+
+  const handleTouchStart = (e) => {
+    setPressed(true)
+    const touch = e.touches[0]
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((touch.clientX - rect.left) / rect.width - 0.5) * 20
+    const y = ((touch.clientY - rect.top) / rect.height - 0.5) * -20
+    setTilt({ x, y })
+  }
+
+  const handleTouchEnd = () => {
+    setPressed(false)
+    setTilt({ x: 0, y: 0 })
+    onClick()
+  }
+
+  return (
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{
+        background: isActive ? 'rgba(193,112,232,0.15)' : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${isActive ? 'rgba(193,112,232,0.6)' : 'rgba(255,255,255,0.08)'}`,
+        borderRadius:'16px',
+        padding:'16px 12px',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        textAlign:'center',
+        cursor:'pointer',
+        transition:'all 0.3s',
+        transform: pressed ? `perspective(500px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(0.97)` : 'perspective(500px) rotateX(0) rotateY(0) scale(1)',
+        boxShadow: isActive ? '0 0 20px rgba(193,112,232,0.3)' : 'none',
+        position:'relative',
+        overflow:'hidden',
+      }}>
+      {isActive && <div style={{ position:'absolute', inset:0, background:'radial-gradient(circle at center, rgba(193,112,232,0.1), transparent)', pointerEvents:'none' }}/>}
+      <span style={{ color: isActive ? '#c170e8' : 'rgba(255,255,255,0.6)', fontSize:'13px', fontWeight: isActive ? 700 : 500, lineHeight:1.3, position:'relative', zIndex:1 }}>
+        {tab.coming && <span style={{ display:'block', fontSize:'9px', color:'#c170e8', fontWeight:700, letterSpacing:'0.1em', marginBottom:'4px' }}>PRONTO</span>}
+        {tab.label}
+      </span>
+    </div>
+  )
+}
+
 export default function Servicios() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('smm')
   const [modal, setModal] = useState(null)
+  const [carouselPage, setCarouselPage] = useState(0)
+  const touchStartX = useRef(null)
+  useEffect(() => setCarouselPage(0), [active])
 
   return (
     <section id="servicios" style={{ padding:'80px 0', background:'#050507', position:'relative', overflow:'hidden' }}>
@@ -138,34 +231,50 @@ export default function Servicios() {
           <p style={{ marginTop:'20px', color:'rgba(255,255,255,0.5)', fontSize:'clamp(16px,2vw,20px)', maxWidth:'680px', margin:'20px auto 0' }}>Soluciones pensadas para hacer crecer tu negocio.</p>
         </div>
 
-        {/* Sticky Pill Nav */}
-        <div className="pill-nav-sticky" style={{ display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'40px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+        {/* Sticky Pill Nav - Desktop / Tilted Cards - Mobile */}
+        {isMobile ? (
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px', marginBottom:'24px' }}>
             {tabs.map(t => (
-              <button key={t.id} onClick={() => setActive(t.id)}
-                style={{ position:'relative', display:'flex', alignItems:'center', gap:'10px', padding:'10px 22px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
-                  background: active === t.id ? '#c170e8' : 'transparent',
-                  color: active === t.id ? '#fff' : 'rgba(255,255,255,0.5)',
-                  boxShadow: active === t.id ? '0 0 20px rgba(193,112,232,0.4)' : 'none',
-                }}>
-                {!isMobile && <img src={t.ico} alt={t.label} style={{ width:'40px', height:'40px', objectFit:'contain' }}/>}
-                {t.label}
-                {t.coming && <span style={{ position:'absolute', top:'-6px', right:'6px', background:'#c170e8', color:'#fff', fontSize:'9px', fontWeight:700, padding:'2px 6px', borderRadius:'100px', whiteSpace:'nowrap' }}>PRONTO</span>}
-              </button>
+              <TiltedTabCard key={t.id} tab={t} active={active} onClick={() => { setActive(t.id); setCarouselPage(0); }}/>
             ))}
           </div>
-        </div>
-
-        {active === 'smm' && (
-          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
-            {smmCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
+        ) : (
+          <div className="pill-nav-sticky" style={{ display:'flex', alignItems:'center', justifyContent:'center', marginBottom:'40px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
+            <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+              {tabs.map(t => (
+                <button key={t.id} onClick={() => setActive(t.id)}
+                  style={{ position:'relative', display:'flex', alignItems:'center', gap:'10px', padding:'10px 22px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
+                    background: active === t.id ? '#c170e8' : 'transparent',
+                    color: active === t.id ? '#fff' : 'rgba(255,255,255,0.5)',
+                    boxShadow: active === t.id ? '0 0 20px rgba(193,112,232,0.4)' : 'none',
+                  }}>
+                  <img src={t.ico} alt={t.label} style={{ width:'40px', height:'40px', objectFit:'contain' }}/>
+                  {t.label}
+                  {t.coming && <span style={{ position:'absolute', top:'-6px', right:'6px', background:'#c170e8', color:'#fff', fontSize:'9px', fontWeight:700, padding:'2px 6px', borderRadius:'100px', whiteSpace:'nowrap' }}>PRONTO</span>}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
+        {active === 'smm' && (
+          isMobile ? (
+            <CarouselGrid cards={smmCards} carouselPage={carouselPage} setCarouselPage={setCarouselPage} touchStartX={touchStartX} setModal={setModal}/>
+          ) : (
+            <div className="tab-content" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'20px' }}>
+              {smmCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
+            </div>
+          )
+        )}
+
         {active === 'contenido' && (
-          <div className="tab-content" style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px' }}>
-            {contCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
-          </div>
+          isMobile ? (
+            <CarouselGrid cards={contCards} carouselPage={carouselPage} setCarouselPage={setCarouselPage} touchStartX={touchStartX} setModal={setModal}/>
+          ) : (
+            <div className="tab-content" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'20px' }}>
+              {contCards.map((c, i) => <SvcCard key={i} title={c.title} onClick={() => setModal(c)}/>)}
+            </div>
+          )
         )}
 
         {active === 'pub' && (
