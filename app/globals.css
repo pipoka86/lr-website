@@ -509,7 +509,8 @@ html, body { overflow-x: hidden; max-width: 100%; }
   }
 
   .tab-content {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
   }
 
   .pill-nav-sticky {

@@ -19,6 +19,7 @@ const valores = [
 export default function Nosotros() {
   const isMobile = useIsMobile()
   const [valIdx, setValIdx] = useState(0)
+  const [showMore, setShowMore] = useState(false)
   const touchStartX = useRef(null)
   return (
     <section id="nosotros" style={{ background:'#050507', padding:'80px 0', position:'relative', overflow:'hidden' }}>
@@ -39,21 +40,28 @@ export default function Nosotros() {
         </div>
 
         {/* Nuestra historia */}
-        <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(193,112,232,0.2)', borderRadius:'20px', padding:'40px 48px', marginBottom:'80px', position:'relative', overflow:'hidden' }}>
+        <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(193,112,232,0.2)', borderRadius:'20px', padding: isMobile ? '24px' : '40px 48px', marginBottom:'80px', position:'relative', overflow:'hidden' }}>
           <div style={{ position:'absolute', top:0, left:0, width:'4px', height:'100%', background:`linear-gradient(to bottom, ${V}, transparent)` }}/>
           <h3 style={{ fontSize:'20px', fontWeight:800, color:'#fff', marginBottom:'20px', letterSpacing:'0.05em', textTransform:'uppercase', opacity:0.5 }}>Nuestra historia</h3>
           <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85, marginBottom:'16px' }}>
             LR Social Media & Content nació de una convicción simple: las marcas merecen una presencia digital que esté a la altura de lo que ofrecen.
           </p>
-          <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85, marginBottom:'16px' }}>
-            Vimos que muchos emprendedores y empresas tenían productos y servicios increíbles, pero sus redes sociales no los representaban. Publicaban sin estrategia, sin datos, sin una voz clara.
-          </p>
-          <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85, marginBottom:'16px' }}>
-            Ahí decidimos crear algo diferente: una agencia que no solo publique contenido, sino que entienda cada marca, construya una estrategia real y entregue resultados concretos.
-          </p>
-          <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85 }}>
-            Hoy trabajamos con marcas de distintas industrias — gastronomía, inmobiliarias, fitness, moda — y cada proyecto es único. Porque cada cliente es único. Y cada plan también.
-          </p>
+          {(!isMobile || showMore) && <>
+            <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85, marginBottom:'16px' }}>
+              Vimos que muchos emprendedores y empresas tenían productos y servicios increíbles, pero sus redes sociales no los representaban. Publicaban sin estrategia, sin datos, sin una voz clara.
+            </p>
+            <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85, marginBottom:'16px' }}>
+              Ahí decidimos crear algo diferente: una agencia que no solo publique contenido, sino que entienda cada marca, construya una estrategia real y entregue resultados concretos.
+            </p>
+            <p style={{ color:'rgba(255,255,255,0.65)', fontSize:'16px', lineHeight:1.85 }}>
+              Hoy trabajamos con marcas de distintas industrias — gastronomía, inmobiliarias, fitness, moda — y cada proyecto es único. Porque cada cliente es único. Y cada plan también.
+            </p>
+          </>}
+          {isMobile && (
+            <button onClick={() => setShowMore(s => !s)} style={{ marginTop:'12px', background:'none', border:'none', color:V, fontSize:'14px', fontWeight:700, cursor:'pointer', padding:'4px 0', display:'flex', alignItems:'center', gap:'4px' }}>
+              {showMore ? 'Ver menos ↑' : 'Ver más ↓'}
+            </button>
+          )}
         </div>
 
         {/* Valores */}
