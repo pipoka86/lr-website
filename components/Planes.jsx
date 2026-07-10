@@ -298,6 +298,54 @@ function TiltedPlanCard({ plan, onClick }) {
   )
 }
 
+
+function TiltedTabCard({ tab, active, onClick }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [pressed, setPressed] = useState(false)
+
+  const handleTouchStart = (e) => {
+    setPressed(true)
+    const touch = e.touches[0]
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((touch.clientX - rect.left) / rect.width - 0.5) * 20
+    const y = ((touch.clientY - rect.top) / rect.height - 0.5) * -20
+    setTilt({ x, y })
+  }
+
+  const handleTouchEnd = () => {
+    setPressed(false)
+    setTilt({ x: 0, y: 0 })
+    onClick()
+  }
+
+  return (
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{
+        background: active === tab.id ? 'rgba(193,112,232,0.15)' : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${active === tab.id ? 'rgba(193,112,232,0.6)' : 'rgba(255,255,255,0.08)'}`,
+        borderRadius:'16px',
+        padding:'16px 12px',
+        display:'flex',
+        alignItems:'center',
+        justifyContent:'center',
+        textAlign:'center',
+        cursor:'pointer',
+        transition:'all 0.3s',
+        transform: pressed ? `perspective(500px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(0.97)` : 'perspective(500px) rotateX(0) rotateY(0) scale(1)',
+        boxShadow: active === tab.id ? '0 0 20px rgba(193,112,232,0.3)' : 'none',
+        position:'relative',
+        overflow:'hidden',
+      }}>
+      {active === tab.id && <div style={{ position:'absolute', inset:0, background:'radial-gradient(circle at center, rgba(193,112,232,0.1), transparent)', pointerEvents:'none' }}/>}
+      <span style={{ color: active === tab.id ? '#c170e8' : 'rgba(255,255,255,0.6)', fontSize:'13px', fontWeight: active === tab.id ? 700 : 500, lineHeight:1.3, position:'relative', zIndex:1 }}>
+        {tab.label}
+      </span>
+    </div>
+  )
+}
+
 export default function Planes() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('redes')
@@ -326,28 +374,51 @@ export default function Planes() {
           </p>
         </div>
 
-        {/* Sticky Pill Nav */}
-        <div className="pill-nav-sticky" style={{ display:'flex', justifyContent:'center', marginBottom:'48px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
-          <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+        {/* Sticky Pill Nav - Desktop / Tilted Cards - Mobile */}
+        {isMobile ? (
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'10px', marginBottom:'24px' }}>
             {tabs.map(t => (
-              <button key={t.id} onClick={() => setActive(t.id)}
-                style={{ padding:'10px 24px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
-                  background: active === t.id ? '#c170e8' : 'transparent',
-                  color: active === t.id ? '#fff' : 'rgba(255,255,255,0.5)',
-                  boxShadow: active === t.id ? '0 0 20px rgba(193,112,232,0.4)' : 'none',
-                }}>
-                {t.label}
-              </button>
+              <TiltedTabCard key={t.id} tab={t} active={active} onClick={() => { setActive(t.id); setCarouselIdx(0); }}/>
             ))}
           </div>
-        </div>
+        ) : (
+          <div className="pill-nav-sticky" style={{ display:'flex', justifyContent:'center', marginBottom:'48px', position:'sticky', top:'96px', zIndex:40, paddingTop:'12px', paddingBottom:'12px', background:'rgba(5,5,7,0.85)', backdropFilter:'blur(12px)' }}>
+            <div style={{ display:'flex', background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'100px', padding:'6px', gap:'4px' }}>
+              {tabs.map(t => (
+                <button key={t.id} onClick={() => setActive(t.id)}
+                  style={{ padding:'10px 24px', borderRadius:'100px', fontSize:'14px', fontWeight:600, cursor:'pointer', fontFamily:'inherit', border:'none', transition:'all 0.3s',
+                    background: active === t.id ? '#c170e8' : 'transparent',
+                    color: active === t.id ? '#fff' : 'rgba(255,255,255,0.5)',
+                    boxShadow: active === t.id ? '0 0 20px rgba(193,112,232,0.4)' : 'none',
+                  }}>
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
               {/* Cards — equal height */}
         {isMobile ? (
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px' }}>
-            {current.planes.map((plan, i) => (
-              <TiltedPlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>
-            ))}
+          <div
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+            onTouchEnd={e => {
+              if (!touchStartX.current) return
+              const diff = touchStartX.current - e.changedTouches[0].clientX
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) setCarouselIdx(i => Math.min(i + 1, current.planes.length - 1))
+                else setCarouselIdx(i => Math.max(i - 1, 0))
+              }
+              touchStartX.current = null
+            }}>
+            <PlanCard plan={current.planes[carouselIdx]} onClick={() => setModal(current.planes[carouselIdx])}/>
+            <div style={{ display:'flex', justifyContent:'center', gap:'8px', marginTop:'16px' }}>
+              {current.planes.map((_, i) => (
+                <button key={i} onClick={() => setCarouselIdx(i)}
+                  style={{ width: i === carouselIdx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === carouselIdx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+              ))}
+            </div>
+            <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'12px', marginTop:'8px' }}>{carouselIdx + 1} de {current.planes.length} · Deslizá</p>
           </div>
         ) : (
           <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
