@@ -1,6 +1,6 @@
 'use client'
 import useIsMobile from './useIsMobile'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 const V = '#c170e8'
 
 const testimonios = [
@@ -15,6 +15,7 @@ const testimonios = [
 export default function Testimonios() {
   const isMobile = useIsMobile()
   const [current, setCurrent] = useState(0)
+  const touchStartX = useRef(null)
   const total = testimonios.length
   const prev = () => setCurrent(c => (c - 1 + total) % total)
   const next = () => setCurrent(c => (c + 1) % total)
@@ -36,7 +37,17 @@ export default function Testimonios() {
         </div>
 
         {/* Carrusel */}
-        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px', marginBottom:'40px' }}>
+        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'20px', marginBottom:'40px' }}
+          onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+          onTouchEnd={e => {
+            if (!touchStartX.current) return
+            const diff = touchStartX.current - e.changedTouches[0].clientX
+            if (Math.abs(diff) > 50) {
+              if (diff > 0) setCurrent(c => (c + 1) % total)
+              else setCurrent(c => (c - 1 + total) % total)
+            }
+            touchStartX.current = null
+          }}>
           {visible.map((t, i) => (
             <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'28px', transition:'all 0.3s', display:'flex', flexDirection:'column', gap:'16px' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor='rgba(193,112,232,0.35)'; e.currentTarget.style.background='rgba(193,112,232,0.05)' }}

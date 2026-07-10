@@ -133,7 +133,45 @@ export default function Proceso() {
           <p style={{ marginTop:'20px', color:'rgba(255,255,255,0.5)', fontSize:'clamp(16px,2vw,20px)', maxWidth:'560px', margin:'20px auto 0' }}>Un proceso simple, claro y orientado a resultados.</p>
         </div>
 
-        <div style={{ position:'relative', padding:'48px 0' }}>
+        {isMobile ? (
+          /* MOBILE CAROUSEL */
+          <div style={{ paddingBottom:'32px' }}
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+            onTouchEnd={e => {
+              if (!touchStartX.current) return
+              const diff = touchStartX.current - e.changedTouches[0].clientX
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) setCarouselIdx(i => Math.min(i + 1, steps.length - 1))
+                else setCarouselIdx(i => Math.max(i - 1, 0))
+              }
+              touchStartX.current = null
+            }}>
+            {/* Step card */}
+            <SpotlightCard title={steps[carouselIdx].title} desc={steps[carouselIdx].desc}/>
+            {/* Numbered circles */}
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'center', marginTop:'24px' }}>
+              {steps.map((s, i) => (
+                <div key={i} style={{ display:'flex', alignItems:'center' }}>
+                  <button onClick={() => setCarouselIdx(i)}
+                    style={{ width:'44px', height:'44px', borderRadius:'50%', background: i === carouselIdx ? V : '#0d0d12', border:`2px solid ${i === carouselIdx ? V : 'rgba(193,112,232,0.3)'}`, color: i === carouselIdx ? '#fff' : 'rgba(255,255,255,0.4)', fontWeight:800, fontSize:'13px', cursor:'pointer', transition:'all 0.3s', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    {s.num}
+                  </button>
+                  {i < steps.length - 1 && (
+                    <div style={{ width:'28px', height:'2px', background: i < carouselIdx ? V : 'rgba(193,112,232,0.2)', transition:'all 0.3s' }}/>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Rocket with bounce on change */}
+            <div style={{ textAlign:'center', marginTop:'16px' }}>
+              <div style={{ display:'inline-block', animation: 'rocketBounce 0.4s ease', animationIterationCount:1 }}>
+                <Rocket/>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* DESKTOP ZIGZAG */
+          <div style={{ position:'relative', padding:'48px 0' }}>
           <div ref={lineRef} className="proceso-line" style={{ display: isMobile ? 'none' : 'block', position:'absolute', left:'50%', top:0, bottom:0, width:'2px', transform:'translateX(-50%)', background:'linear-gradient(to bottom,transparent,rgba(193,112,232,0.5) 5%,rgba(193,112,232,0.5) 95%,transparent)', zIndex:1 }}/>
 
           {/* Rocket pointing UP, moving down */}
@@ -152,7 +190,8 @@ export default function Proceso() {
               {(s.right && !isMobile) ? <SpotlightCard title={s.title} desc={s.desc}/> : <div/>}
             </div>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   )
