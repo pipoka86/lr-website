@@ -61,15 +61,26 @@ function Modal({ card, onClose }) {
         {card.incluye && <>
           <div style={{ marginBottom:'16px' }}>
             <p style={{ fontSize:'11px', fontWeight:700, color:V, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'8px' }}>¿Qué incluye?</p>
-            <p style={{ color:'rgba(255,255,255,0.7)', fontSize:'15px', lineHeight:1.75 }}>{card.incluye}</p>
+            {isMobile ? (
+              <ul style={{ listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:'6px' }}>
+                {card.incluye.split(',').map((item, idx) => (
+                  <li key={idx} style={{ display:'flex', alignItems:'flex-start', gap:'8px', color:'rgba(255,255,255,0.7)', fontSize:'14px', lineHeight:1.5 }}>
+                    <span style={{ color:V, fontSize:'12px', marginTop:'2px', flexShrink:0 }}>✓</span>
+                    {item.trim()}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p style={{ color:'rgba(255,255,255,0.7)', fontSize:'15px', lineHeight:1.75 }}>{card.incluye}</p>
+            )}
           </div>
           <div style={{ marginBottom:'16px' }}>
             <p style={{ fontSize:'11px', fontWeight:700, color:V, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'8px' }}>¿Para quién es?</p>
-            <p style={{ color:'rgba(255,255,255,0.7)', fontSize:'15px', lineHeight:1.75 }}>{card.quien}</p>
+            <p style={{ color:'rgba(255,255,255,0.7)', fontSize: isMobile ? '14px' : '15px', lineHeight:1.6 }}>{card.quien}</p>
           </div>
           <div style={{ background:'rgba(193,112,232,0.08)', border:'1px solid rgba(193,112,232,0.2)', borderRadius:'12px', padding:'16px 20px' }}>
             <p style={{ fontSize:'11px', fontWeight:700, color:V, letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'8px' }}>✦ Beneficio clave</p>
-            <p style={{ color:'rgba(255,255,255,0.85)', fontSize:'15px', lineHeight:1.75, fontWeight:500 }}>{card.beneficio}</p>
+            <p style={{ color:'rgba(255,255,255,0.85)', fontSize: isMobile ? '14px' : '15px', lineHeight:1.6, fontWeight:500 }}>{card.beneficio}</p>
           </div>
         </>}
         {card.desc && <>
