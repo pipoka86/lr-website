@@ -1,4 +1,5 @@
 'use client'
+import { useState, useRef } from 'react'
 import useIsMobile from './useIsMobile'
 const V = '#c170e8'
 
@@ -17,6 +18,8 @@ const valores = [
 
 export default function Nosotros() {
   const isMobile = useIsMobile()
+  const [valIdx, setValIdx] = useState(0)
+  const touchStartX = useRef(null)
   return (
     <section id="nosotros" style={{ background:'#050507', padding:'80px 0', position:'relative', overflow:'hidden' }}>
       <div style={{ position:'absolute', top:'30%', left:'50%', transform:'translate(-50%,-50%)', width:'600px', height:'600px', borderRadius:'50%', background:'rgba(193,112,232,0.04)', filter:'blur(100px)', pointerEvents:'none' }}/>
@@ -59,17 +62,43 @@ export default function Nosotros() {
           <h2 style={{ fontSize:'clamp(32px,4vw,56px)', fontWeight:900, letterSpacing:'-0.02em', color:'#fff' }}>Lo que nos define</h2>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
-          {valores.map((v, i) => (
-            <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'32px', transition:'all 0.3s', cursor:'default' }}
-              onMouseEnter={e => { e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.borderColor='rgba(193,112,232,0.4)'; e.currentTarget.style.background='rgba(193,112,232,0.06)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.background='rgba(255,255,255,0.03)' }}>
+        {isMobile ? (
+          <div style={{ marginBottom:'48px' }}
+            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
+            onTouchEnd={e => {
+              if (touchStartX.current === null) return
+              const diff = touchStartX.current - e.changedTouches[0].clientX
+              if (Math.abs(diff) > 50) {
+                if (diff > 0) setValIdx(i => Math.min(i + 1, valores.length - 1))
+                else setValIdx(i => Math.max(i - 1, 0))
+              }
+              touchStartX.current = null
+            }}>
+            <div style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(193,112,232,0.2)', borderRadius:'16px', padding:'32px', marginBottom:'16px' }}>
               <div style={{ width:'36px', height:'4px', background:V, borderRadius:'2px', marginBottom:'18px' }}/>
-              <h4 style={{ fontSize:'18px', fontWeight:700, color:'#fff', marginBottom:'12px' }}>{v.title}</h4>
-              <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'15px', lineHeight:1.7 }}>{v.desc}</p>
+              <h4 style={{ fontSize:'18px', fontWeight:700, color:'#fff', marginBottom:'12px' }}>{valores[valIdx].title}</h4>
+              <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'15px', lineHeight:1.7 }}>{valores[valIdx].desc}</p>
             </div>
-          ))}
-        </div>
+            <div style={{ display:'flex', justifyContent:'center', gap:'8px' }}>
+              {valores.map((_, i) => (
+                <button key={i} onClick={() => setValIdx(i)}
+                  style={{ width: i === valIdx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === valIdx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'24px', marginBottom:'80px' }}>
+            {valores.map((v, i) => (
+              <div key={i} style={{ background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.08)', borderRadius:'16px', padding:'32px', transition:'all 0.3s', cursor:'default' }}
+                onMouseEnter={e => { e.currentTarget.style.transform='scale(1.04)'; e.currentTarget.style.borderColor='rgba(193,112,232,0.4)'; e.currentTarget.style.background='rgba(193,112,232,0.06)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform='scale(1)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.background='rgba(255,255,255,0.03)' }}>
+                <div style={{ width:'36px', height:'4px', background:V, borderRadius:'2px', marginBottom:'18px' }}/>
+                <h4 style={{ fontSize:'18px', fontWeight:700, color:'#fff', marginBottom:'12px' }}>{v.title}</h4>
+                <p style={{ color:'rgba(255,255,255,0.55)', fontSize:'15px', lineHeight:1.7 }}>{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Compromiso */}
         <div style={{ textAlign:'center', marginBottom:'32px' }}>
