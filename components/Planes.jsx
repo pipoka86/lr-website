@@ -243,6 +243,61 @@ const tabs = [
 ]
 
 
+
+function TiltedPlanCard({ plan, onClick }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 })
+  const [pressed, setPressed] = useState(false)
+
+  const handleTouchStart = (e) => {
+    setPressed(true)
+    const touch = e.touches[0]
+    const rect = e.currentTarget.getBoundingClientRect()
+    const x = ((touch.clientX - rect.left) / rect.width - 0.5) * 20
+    const y = ((touch.clientY - rect.top) / rect.height - 0.5) * -20
+    setTilt({ x, y })
+  }
+
+  const handleTouchEnd = (e) => {
+    setPressed(false)
+    setTilt({ x: 0, y: 0 })
+    onClick()
+  }
+
+  return (
+    <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      style={{
+        background: plan.highlight ? 'rgba(193,112,232,0.1)' : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${plan.highlight ? 'rgba(193,112,232,0.5)' : 'rgba(255,255,255,0.08)'}`,
+        borderRadius:'16px',
+        padding:'16px 12px',
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-between',
+        cursor:'pointer',
+        transition:'all 0.3s',
+        transform: pressed ? `perspective(500px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) scale(0.97)` : 'perspective(500px) rotateX(0) rotateY(0) scale(1)',
+        boxShadow: plan.highlight ? '0 0 20px rgba(193,112,232,0.25)' : pressed ? '0 0 15px rgba(193,112,232,0.2)' : 'none',
+        minHeight: '120px',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+      {plan.highlight && (
+        <div style={{ position:'absolute', inset:0, background:'radial-gradient(circle at center, rgba(193,112,232,0.08), transparent)', pointerEvents:'none' }}/>
+      )}
+      {plan.badge && (
+        <span style={{ position:'absolute', top:'8px', right:'8px', background:V, color:'#fff', fontSize:'8px', fontWeight:700, padding:'2px 6px', borderRadius:'100px' }}>{plan.badge}</span>
+      )}
+      <div style={{ position:'relative', zIndex:1 }}>
+        <div style={{ fontSize:'13px', fontWeight:700, color: plan.highlight ? V : '#fff', marginBottom:'4px', lineHeight:1.3 }}>{plan.name}</div>
+        <div style={{ fontSize:'11px', color:'rgba(255,255,255,0.4)', lineHeight:1.3 }}>{plan.sub}</div>
+      </div>
+      <div style={{ marginTop:'10px', fontSize:'11px', color:V, fontWeight:600, position:'relative', zIndex:1 }}>Ver más →</div>
+    </div>
+  )
+}
+
 export default function Planes() {
   const isMobile = useIsMobile()
   const [active, setActive] = useState('redes')
@@ -289,25 +344,10 @@ export default function Planes() {
 
               {/* Cards — equal height */}
         {isMobile ? (
-          <div
-            onTouchStart={e => { touchStartX.current = e.touches[0].clientX }}
-            onTouchEnd={e => {
-              if (!touchStartX.current) return
-              const diff = touchStartX.current - e.changedTouches[0].clientX
-              if (Math.abs(diff) > 50) {
-                if (diff > 0) setCarouselIdx(i => Math.min(i + 1, current.planes.length - 1))
-                else setCarouselIdx(i => Math.max(i - 1, 0))
-              }
-              touchStartX.current = null
-            }}>
-            <PlanCard plan={current.planes[carouselIdx]} onClick={() => setModal(current.planes[carouselIdx])}/>
-            <div style={{ display:'flex', justifyContent:'center', gap:'8px', marginTop:'16px' }}>
-              {current.planes.map((_, i) => (
-                <button key={i} onClick={() => setCarouselIdx(i)}
-                  style={{ width: i === carouselIdx ? '20px' : '8px', height:'8px', borderRadius:'100px', background: i === carouselIdx ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
-              ))}
-            </div>
-            <p style={{ textAlign:'center', color:'rgba(255,255,255,0.3)', fontSize:'12px', marginTop:'8px' }}>{carouselIdx + 1} de {current.planes.length} · Deslizá</p>
+          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'12px' }}>
+            {current.planes.map((plan, i) => (
+              <TiltedPlanCard key={i} plan={plan} onClick={() => setModal(plan)}/>
+            ))}
           </div>
         ) : (
           <div className="tab-content" style={{ display: 'grid', gridTemplateColumns: `repeat(${current.planes.length},1fr)`, gap: '24px', alignItems: 'stretch' }}>
