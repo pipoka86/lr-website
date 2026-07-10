@@ -72,22 +72,22 @@ export default function Testimonios() {
 
         {/* Controles */}
         <div style={{ display:'flex', alignItems:'center', justifyContent:'center', gap:'16px' }}>
-          <button onClick={prev} style={{ width:'44px', height:'44px', borderRadius:'50%', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.12)', color:'#fff', fontSize:'18px', cursor:'pointer', transition:'all 0.3s', display:'flex', alignItems:'center', justifyContent:'center' }}
+          {!isMobile && <button onClick={prev} style={{ width:'44px', height:'44px', borderRadius:'50%', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.12)', color:'#fff', fontSize:'18px', cursor:'pointer', transition:'all 0.3s', display:'flex', alignItems:'center', justifyContent:'center' }}
             onMouseEnter={e => { e.currentTarget.style.borderColor=V; e.currentTarget.style.color=V }}
             onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.12)'; e.currentTarget.style.color='#fff' }}>
             ←
-          </button>
+          </button>}
           <div style={{ display:'flex', gap:'8px' }}>
             {testimonios.map((_, i) => (
               <button key={i} onClick={() => setCurrent(i)}
                 style={{ width: i === current ? '24px' : '8px', height:'8px', borderRadius:'100px', background: i === current ? V : 'rgba(255,255,255,0.2)', border:'none', cursor:'pointer', transition:'all 0.3s', padding:0 }}/>
             ))}
           </div>
-          <button onClick={next} style={{ width:'44px', height:'44px', borderRadius:'50%', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.12)', color:'#fff', fontSize:'18px', cursor:'pointer', transition:'all 0.3s', display:'flex', alignItems:'center', justifyContent:'center' }}
+          {!isMobile && <button onClick={next} style={{ width:'44px', height:'44px', borderRadius:'50%', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.12)', color:'#fff', fontSize:'18px', cursor:'pointer', transition:'all 0.3s', display:'flex', alignItems:'center', justifyContent:'center' }}
             onMouseEnter={e => { e.currentTarget.style.borderColor=V; e.currentTarget.style.color=V }}
             onMouseLeave={e => { e.currentTarget.style.borderColor='rgba(255,255,255,0.12)'; e.currentTarget.style.color='#fff' }}>
             →
-          </button>
+          </button>}
         </div>
       </div>
     </section>
