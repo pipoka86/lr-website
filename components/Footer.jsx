@@ -39,21 +39,21 @@ export default function Footer() {
           <h4 onClick={() => isMobile && toggle('servicios')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             Servicios {isMobile && <span style={{ fontSize:'12px' }}>{open.servicios ? '▲' : '▼'}</span>}
           </h4>
-          {(!isMobile || open.servicios) && (
+          <div style={{ maxHeight: (!isMobile || open.servicios) ? '500px' : '0px', overflow:'hidden', transition: isMobile ? 'max-height 0.35s ease' : 'none' }}>
             <div>
               <a href="#servicios" className="footer-link">Gestión de Redes Sociales</a>
               <a href="#servicios" className="footer-link">Creación de Contenido</a>
               <a href="#servicios" className="footer-link">Publicidad Digital (Ads)</a>
               <a href="#servicios" className="footer-link">Diseño Web</a>
             </div>
-          )}
+          </div>
         </div>
 
         <div>
           <h4 onClick={() => isMobile && toggle('nav')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             Navegación {isMobile && <span style={{ fontSize:'12px' }}>{open.nav ? '▲' : '▼'}</span>}
           </h4>
-          {(!isMobile || open.nav) && (
+          <div style={{ maxHeight: (!isMobile || open.nav) ? '500px' : '0px', overflow:'hidden', transition: isMobile ? 'max-height 0.35s ease' : 'none' }}>
             <div>
               <a href="#inicio" className="footer-link">Inicio</a>
               <a href="#servicios" className="footer-link">Servicios</a>
@@ -63,20 +63,20 @@ export default function Footer() {
               <a href="#faq" className="footer-link">FAQ</a>
               <a href="#cta" className="footer-link">Contacto</a>
             </div>
-          )}
+          </div>
         </div>
 
         <div>
           <h4 onClick={() => isMobile && toggle('contacto')} style={{ color:'#fff', fontWeight:700, fontSize:'15px', marginBottom: isMobile ? '8px' : '20px', cursor: isMobile ? 'pointer' : 'default', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             Contacto {isMobile && <span style={{ fontSize:'12px' }}>{open.contacto ? '▲' : '▼'}</span>}
           </h4>
-          {(!isMobile || open.contacto) && (
+          <div style={{ maxHeight: (!isMobile || open.contacto) ? '500px' : '0px', overflow:'hidden', transition: isMobile ? 'max-height 0.35s ease' : 'none' }}>
             <div>
               <a href="https://wa.me/5491158460123?text=Hola%21%20Me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios%20de%20marketing%20digital.%20%C2%BFPodemos%20hablar%3F" target="_blank" rel="noopener noreferrer" className="footer-link">WhatsApp</a>
               <a href="https://www.instagram.com/lr.socialcontent/" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a>
               <a href="mailto:info@lrsocialmedia.com.ar" className="footer-link">info@lrsocialmedia.com.ar</a>
             </div>
-          )}
+          </div>
         </div>
 
       </div>
